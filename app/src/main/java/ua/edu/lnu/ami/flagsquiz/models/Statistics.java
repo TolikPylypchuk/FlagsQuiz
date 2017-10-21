@@ -5,8 +5,8 @@ import java.util.Date;
 import com.orm.SugarRecord;
 
 /**
- * @author Tolik Pylypchuk
  * <p>Represents a statistics about a quiz.</p>
+ * @author Tolik Pylypchuk
  */
 public class Statistics extends SugarRecord {
 	
