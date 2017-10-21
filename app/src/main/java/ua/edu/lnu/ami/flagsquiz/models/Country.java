@@ -4,8 +4,8 @@ import com.orm.SugarRecord;
 import com.orm.dsl.Unique;
 
 /**
- * @author Tolik Pylypchuk
  * <p>Represents a country.</p>
+ * @author Tolik Pylypchuk
  */
 public class Country extends SugarRecord {
 	
