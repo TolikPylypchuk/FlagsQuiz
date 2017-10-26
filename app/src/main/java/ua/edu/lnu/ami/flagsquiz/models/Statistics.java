@@ -14,6 +14,15 @@ public class Statistics extends SugarRecord {
 	private int numQuestions;
 	private int numAttempts;
 	
+	public Statistics() {
+	}
+	
+	public Statistics(Date dateTime, int numQuestions, int numAttempts) {
+		this.dateTime = dateTime;
+		this.numQuestions = numQuestions;
+		this.numAttempts = numAttempts;
+	}
+	
 	public Date getDateTime() {
 		return dateTime;
 	}
@@ -36,5 +45,11 @@ public class Statistics extends SugarRecord {
 	
 	public void setNumAttempts(int numAttempts) {
 		this.numAttempts = numAttempts;
+	}
+	
+	@Override
+	public String toString() {
+		return "Statistics: " + dateTime + "; # of questions: " +
+			numQuestions + "; # of attempts: " + numAttempts;
 	}
 }
