@@ -6,6 +6,7 @@ import dagger.Component;
 import dagger.android.AndroidInjectionModule;
 import dagger.android.AndroidInjector;
 import ua.edu.lnu.ami.flagsquiz.FlagsQuizApp;
+import ua.edu.lnu.ami.flagsquiz.services.RegionService;
 
 /**
  * <p>
@@ -18,4 +19,5 @@ import ua.edu.lnu.ami.flagsquiz.FlagsQuizApp;
 @Singleton
 public interface FlagsQuizAppComponent extends AndroidInjector<FlagsQuizApp> {
 	String provideString();
+	RegionService provideRegionService();
 }

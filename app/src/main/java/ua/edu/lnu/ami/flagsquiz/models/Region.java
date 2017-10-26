@@ -29,6 +29,6 @@ public class Region extends SugarRecord {
 	
 	@Override
 	public String toString() {
-		return "Region: " + name;
+		return "Region #" + getId() + ": " + name;
 	}
 }

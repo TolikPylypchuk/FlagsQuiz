@@ -52,6 +52,6 @@ public class Country extends SugarRecord {
 	
 	@Override
 	public String toString() {
-		return "Country: " + name;
+		return "Country #" + getId() + ": " + name;
 	}
 }

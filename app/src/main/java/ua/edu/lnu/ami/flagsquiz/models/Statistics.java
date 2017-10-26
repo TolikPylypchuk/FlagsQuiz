@@ -49,7 +49,7 @@ public class Statistics extends SugarRecord {
 	
 	@Override
 	public String toString() {
-		return "Statistics: " + dateTime + "; # of questions: " +
+		return "Statistics #" + getId() + ": " + dateTime + "; # of questions: " +
 			numQuestions + "; # of attempts: " + numAttempts;
 	}
 }
