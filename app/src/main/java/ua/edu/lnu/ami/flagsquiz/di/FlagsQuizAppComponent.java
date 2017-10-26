@@ -18,6 +18,5 @@ import ua.edu.lnu.ami.flagsquiz.services.RegionService;
 @Component(modules = { AndroidInjectionModule.class, FlagsQuizAppModule.class })
 @Singleton
 public interface FlagsQuizAppComponent extends AndroidInjector<FlagsQuizApp> {
-	String provideString();
 	RegionService provideRegionService();
 }

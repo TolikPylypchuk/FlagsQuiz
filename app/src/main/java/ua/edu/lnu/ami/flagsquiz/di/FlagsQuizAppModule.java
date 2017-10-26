@@ -22,12 +22,6 @@ public abstract class FlagsQuizAppModule {
 	
 	@Provides
 	@Singleton
-	public static String provideString() {
-		return "Hello world!";
-	}
-	
-	@Provides
-	@Singleton
 	public static RegionService provideRegionService() {
 		return new RegionServiceImpl();
 	}
