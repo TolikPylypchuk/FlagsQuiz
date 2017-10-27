@@ -18,7 +18,7 @@ import ua.edu.lnu.ami.flagsquiz.services.impl.*;
 public abstract class FlagsQuizAppModule {
 	
 	@ContributesAndroidInjector
-	public abstract MainActivity contributeActivityInjector();
+	public abstract MainActivity contributeMainActivityInjector();
 	
 	@Provides
 	@Singleton
@@ -30,5 +30,11 @@ public abstract class FlagsQuizAppModule {
 	@Singleton
 	public static RegionService provideRegionService() {
 		return new RegionServiceImpl();
+	}
+	
+	@Provides
+	@Singleton
+	public static StatisticsService provideStatisticsService() {
+		return new StatisticsServiceImpl();
 	}
 }

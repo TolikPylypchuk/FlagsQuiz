@@ -18,7 +18,7 @@ public class CountryServiceImpl implements CountryService {
 	
 	@Override
 	public Country getById(Long id) {
-		id = Objects.requireNonNull(id, "Id must not be null.");
+		Objects.requireNonNull(id, "Id must not be null.");
 		return SugarRecord.findById(Country.class, id);
 	}
 	

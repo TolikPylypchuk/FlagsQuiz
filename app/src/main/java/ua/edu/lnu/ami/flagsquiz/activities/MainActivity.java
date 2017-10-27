@@ -13,13 +13,16 @@ import dagger.android.DaggerActivity;
 import ua.edu.lnu.ami.flagsquiz.R;
 import ua.edu.lnu.ami.flagsquiz.models.Country;
 import ua.edu.lnu.ami.flagsquiz.models.Region;
+import ua.edu.lnu.ami.flagsquiz.models.Statistics;
 import ua.edu.lnu.ami.flagsquiz.services.CountryService;
 import ua.edu.lnu.ami.flagsquiz.services.RegionService;
+import ua.edu.lnu.ami.flagsquiz.services.StatisticsService;
 
 public class MainActivity extends DaggerActivity {
 	
 	private CountryService countryService;
 	private RegionService regionService;
+	private StatisticsService statisticsService;
 	
 	@Inject
 	void setCountryService(CountryService countryService) {
@@ -31,6 +34,11 @@ public class MainActivity extends DaggerActivity {
 		this.regionService = regionService;
 	}
 	
+	@Inject
+	void setStatisticsService(StatisticsService statisticsService) {
+		this.statisticsService = statisticsService;
+	}
+	
 	@Override
 	@SuppressLint("SetTextI18n")
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +47,11 @@ public class MainActivity extends DaggerActivity {
 		
 		List<Region> regions = regionService.getAll();
 		List<Country> countries = countryService.getAll();
+		List<Statistics> statistics = statisticsService.getAll();
 		
 		TextView target = findViewById(R.id.target);
 		target.setText("# of regions: " + regions.size() + "; " +
-			"# of countries: " + countries.size());
+			"# of countries: " + countries.size() + "; " +
+			"# of stats entries: " + statistics.size());
 	}
 }

@@ -17,7 +17,7 @@ public class RegionServiceImpl implements RegionService {
 	
 	@Override
 	public Region getById(Long id) {
-		id = Objects.requireNonNull(id, "Id must not be null.");
+		Objects.requireNonNull(id, "Id must not be null.");
 		return SugarRecord.findById(Region.class, id);
 	}
 	
