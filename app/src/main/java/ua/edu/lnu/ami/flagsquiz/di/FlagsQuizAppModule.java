@@ -6,9 +6,9 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.android.ContributesAndroidInjector;
 
-import ua.edu.lnu.ami.flagsquiz.MainActivity;
-import ua.edu.lnu.ami.flagsquiz.services.RegionService;
-import ua.edu.lnu.ami.flagsquiz.services.impl.RegionServiceImpl;
+import ua.edu.lnu.ami.flagsquiz.activities.MainActivity;
+import ua.edu.lnu.ami.flagsquiz.services.*;
+import ua.edu.lnu.ami.flagsquiz.services.impl.*;
 
 /**
  * <p>Represents a module which provides Dagger with necessary instances.</p>
@@ -19,6 +19,12 @@ public abstract class FlagsQuizAppModule {
 	
 	@ContributesAndroidInjector
 	public abstract MainActivity contributeActivityInjector();
+	
+	@Provides
+	@Singleton
+	public static CountryService provideCountryService() {
+		return new CountryServiceImpl();
+	}
 	
 	@Provides
 	@Singleton
