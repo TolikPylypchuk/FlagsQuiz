@@ -1,10 +1,13 @@
 package ua.edu.lnu.ami.flagsquiz.services.impl;
 
+import java.util.List;
 import java.util.Objects;
 
 import android.app.Application;
+import android.preference.MultiSelectListPreference;
 
 import ua.edu.lnu.ami.flagsquiz.models.Preferences;
+import ua.edu.lnu.ami.flagsquiz.models.Region;
 import ua.edu.lnu.ami.flagsquiz.services.PreferencesService;
 import ua.edu.lnu.ami.flagsquiz.services.RegionService;
 
@@ -29,12 +32,18 @@ public class PreferencesServiceImpl implements PreferencesService {
 	}
 	
 	@Override
-	public void set(Preferences preferences) {
-	
-	}
-	
-	@Override
-	public void delete() {
-	
+	public void populateRegions(MultiSelectListPreference preference) {
+		List<Region> regions = regionService.getAll();
+		
+		String[] entries = new String[regions.size()];
+		String[] entryValues = new String[regions.size()];
+		
+		for (int i = 0; i < regions.size(); i++) {
+			entries[i] = regions.get(i).getName();
+			entryValues[i] = regions.get(i).getId().toString();
+		}
+		
+		preference.setEntries(entries);
+		preference.setEntryValues(entryValues);
 	}
 }

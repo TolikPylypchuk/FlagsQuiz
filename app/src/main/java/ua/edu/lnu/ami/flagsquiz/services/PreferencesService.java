@@ -1,5 +1,7 @@
 package ua.edu.lnu.ami.flagsquiz.services;
 
+import android.preference.MultiSelectListPreference;
+
 import ua.edu.lnu.ami.flagsquiz.models.Preferences;
 
 /**
@@ -9,6 +11,5 @@ import ua.edu.lnu.ami.flagsquiz.models.Preferences;
 public interface PreferencesService {
 	
 	Preferences get();
-	void set(Preferences preferences);
-	void delete();
+	void populateRegions(MultiSelectListPreference regions);
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<ListPreference
+		android:key="num_questions"
+		android:entries="@array/num_questions"
+		android:entryValues="@array/num_questions"
+		android:title="@string/prefs_num_question_title"
+		android:dialogTitle="@string/prefs_num_question_title"
+		android:summary="@string/prefs_num_question_summary" />
+	
+	<ListPreference
+		android:key="num_choices"
+		android:entries="@array/num_choices"
+		android:entryValues="@array/num_choices"
+		android:title="@string/prefs_num_choices_title"
+		android:dialogTitle="@string/prefs_num_choices_title"
+		android:summary="@string/prefs_num_choices_summary" />
+	
+	<MultiSelectListPreference
+		android:key="regions"
+		android:title="@string/prefs_regions_title"
+		android:dialogTitle="@string/prefs_regions_title"
+		android:summary="@string/prefs_regions_summary" />
+	
+</PreferenceScreen>
