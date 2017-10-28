@@ -1,9 +1,14 @@
 package ua.edu.lnu.ami.flagsquiz.services.impl;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.preference.MultiSelectListPreference;
 
 import ua.edu.lnu.ami.flagsquiz.models.Preferences;
@@ -12,6 +17,7 @@ import ua.edu.lnu.ami.flagsquiz.services.PreferencesService;
 import ua.edu.lnu.ami.flagsquiz.services.RegionService;
 
 /**
+ * <p>Represents an implementation of a service for CRUD operations on preferences.</p>
  * @author Tolik Pylypchuk
  */
 public class PreferencesServiceImpl implements PreferencesService {
@@ -28,7 +34,28 @@ public class PreferencesServiceImpl implements PreferencesService {
 	
 	@Override
 	public Preferences get() {
-		return null;
+		SharedPreferences sharedPreferences =
+			application.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
+		
+		Preferences preferences = new Preferences();
+		preferences.setNumQuestions(sharedPreferences.getInt(NUM_QUESTIONS, -1));
+		preferences.setNumChoices(sharedPreferences.getInt(NUM_QUESTIONS, -1));
+		
+		Set<String> regionNames = sharedPreferences.getStringSet(REGIONS, Collections.emptySet());
+		
+		List<Region> regions = regionService.getAll();
+		
+		List<Region> preferredRegions = new ArrayList<>();
+		
+		for (Region region : regions) {
+			if (regionNames.contains(region.getName())) {
+				preferredRegions.add(region);
+			}
+		}
+		
+		preferences.setRegions(preferredRegions);
+		
+		return preferences;
 	}
 	
 	@Override
