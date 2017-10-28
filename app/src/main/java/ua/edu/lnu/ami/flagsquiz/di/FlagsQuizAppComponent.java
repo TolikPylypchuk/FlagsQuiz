@@ -5,7 +5,9 @@ import javax.inject.Singleton;
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;
 import dagger.android.AndroidInjector;
+
 import ua.edu.lnu.ami.flagsquiz.FlagsQuizApp;
+import ua.edu.lnu.ami.flagsquiz.services.*;
 
 /**
  * <p>
@@ -17,5 +19,7 @@ import ua.edu.lnu.ami.flagsquiz.FlagsQuizApp;
 @Component(modules = { AndroidInjectionModule.class, FlagsQuizAppModule.class })
 @Singleton
 public interface FlagsQuizAppComponent extends AndroidInjector<FlagsQuizApp> {
-	String provideString();
+	CountryService provideCountryService();
+	RegionService provideRegionService();
+	StatisticsService provideStatisticsService();
 }
