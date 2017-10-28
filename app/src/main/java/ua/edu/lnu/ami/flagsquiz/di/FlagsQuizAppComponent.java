@@ -21,5 +21,13 @@ import ua.edu.lnu.ami.flagsquiz.services.*;
 public interface FlagsQuizAppComponent extends AndroidInjector<FlagsQuizApp> {
 	CountryService provideCountryService();
 	RegionService provideRegionService();
+	PreferencesService providePreferencesService();
 	StatisticsService provideStatisticsService();
+	
+	@Component.Builder
+	abstract class Builder extends AndroidInjector.Builder<FlagsQuizApp> {
+		
+		@Override
+		public abstract FlagsQuizAppComponent build();
+	}
 }

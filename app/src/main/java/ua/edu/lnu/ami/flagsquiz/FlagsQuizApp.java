@@ -3,11 +3,13 @@ package ua.edu.lnu.ami.flagsquiz;
 import javax.inject.Inject;
 
 import android.app.Activity;
+import android.app.Fragment;
 
 import com.orm.SugarApp;
 
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
+import dagger.android.HasFragmentInjector;
 
 import ua.edu.lnu.ami.flagsquiz.di.DaggerFlagsQuizAppComponent;
 
@@ -15,23 +17,34 @@ import ua.edu.lnu.ami.flagsquiz.di.DaggerFlagsQuizAppComponent;
  * <p>Represents the FlagsQuiz application.</p>
  * @author Tolik Pylypchuk
  */
-public class FlagsQuizApp extends SugarApp implements HasActivityInjector {
+public class FlagsQuizApp extends SugarApp implements HasActivityInjector, HasFragmentInjector {
 	
-	private DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
+	private DispatchingAndroidInjector<Activity> activityInjector;
+	private DispatchingAndroidInjector<Fragment> fragmentInjector;
 	
 	@Inject
-	void setDispatchingAndroidInjector(DispatchingAndroidInjector<Activity> injector) {
-		dispatchingAndroidInjector = injector;
+	void setActivityInjector(DispatchingAndroidInjector<Activity> activityInjector) {
+		this.activityInjector = activityInjector;
+	}
+	
+	@Inject
+	void setFragmentInjector(DispatchingAndroidInjector<Fragment> fragmentInjector) {
+		this.fragmentInjector = fragmentInjector;
 	}
 	
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		DaggerFlagsQuizAppComponent.create().inject(this);
+		DaggerFlagsQuizAppComponent.builder().create(this).inject(this);
 	}
 	
 	@Override
 	public DispatchingAndroidInjector<Activity> activityInjector() {
-		return dispatchingAndroidInjector;
+		return activityInjector;
+	}
+	
+	@Override
+	public DispatchingAndroidInjector<Fragment> fragmentInjector() {
+		return fragmentInjector;
 	}
 }
