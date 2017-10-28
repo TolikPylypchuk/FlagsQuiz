@@ -11,6 +11,7 @@ import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import dagger.android.HasFragmentInjector;
 
+import ua.edu.lnu.ami.flagsquiz.db.Database;
 import ua.edu.lnu.ami.flagsquiz.di.DaggerFlagsQuizAppComponent;
 
 /**
@@ -36,6 +37,7 @@ public class FlagsQuizApp extends SugarApp implements HasActivityInjector, HasFr
 	public void onCreate() {
 		super.onCreate();
 		DaggerFlagsQuizAppComponent.builder().create(this).inject(this);
+		Database.initialize();
 	}
 	
 	@Override
