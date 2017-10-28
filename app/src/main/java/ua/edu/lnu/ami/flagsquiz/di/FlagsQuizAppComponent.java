@@ -26,5 +26,8 @@ public interface FlagsQuizAppComponent extends AndroidInjector<FlagsQuizApp> {
 	
 	@Component.Builder
 	abstract class Builder extends AndroidInjector.Builder<FlagsQuizApp> {
+		
+		@Override
+		public abstract FlagsQuizAppComponent build();
 	}
 }
