@@ -27,7 +27,7 @@ public class FlagsQuizApp extends SugarApp implements HasActivityInjector {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		DaggerFlagsQuizAppComponent.create().inject(this);
+		DaggerFlagsQuizAppComponent.builder().create(this).inject(this);
 	}
 	
 	@Override
