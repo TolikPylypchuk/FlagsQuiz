@@ -17,7 +17,7 @@ import ua.edu.lnu.ami.flagsquiz.services.PreferencesService;
 import ua.edu.lnu.ami.flagsquiz.services.RegionService;
 
 /**
- * <p>Represents an implementation of a service for CRUD operations on preferences.</p>
+ * <p>Represents an implementation of a service for accessing preferences.</p>
  * @author Tolik Pylypchuk
  */
 public class PreferencesServiceImpl implements PreferencesService {
