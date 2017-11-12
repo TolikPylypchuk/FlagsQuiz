@@ -5,7 +5,6 @@ import com.orm.dsl.Unique;
 
 /**
  * <p>Represents a region of the world.</p>
- * @author Tolik Pylypchuk
  */
 public class Region extends SugarRecord {
 	
