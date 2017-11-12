@@ -204,7 +204,21 @@ public class Database {
                 new Country("The Solomon Islands", "sb.png",oceania),
                 new Country("Tonga", "to.png", oceania),
                 new Country("Tuvalu", "tv.png", oceania),
-                new Country("Vanuatu", "vu.png", oceania)
+                new Country("Vanuatu", "vu.png", oceania),
+
+                //South America
+                new Country ("Argentina", "ar.png", southAmerica),
+                new Country ("Bolivia", "bo.png", southAmerica),
+                new Country ("Brazil", "br.png", southAmerica),
+                new Country ("Chile", "cl.png", southAmerica),
+                new Country ("Colombia", "co.png", southAmerica),
+                new Country ("Ecuador", "ec.png", southAmerica),
+                new Country ("Guyana", "gy.png", southAmerica),
+                new Country ("Paraguay", "py.png", southAmerica),
+                new Country ("Peru", "pe.png", southAmerica),
+                new Country ("Suriname", "sr.png", southAmerica),
+                new Country ("Uruguay", "uy.png", southAmerica),
+                new Country ("Venezuela", "ve.png", southAmerica)
         };
 
         SugarRecord.saveInTx(africa, northAmerica, southAmerica, asia, europe, oceania);
