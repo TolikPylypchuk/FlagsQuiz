@@ -186,8 +186,25 @@ public class Database {
                 new Country("The United Kingdom", "gb.png", europe),
                 new Country("Vatican", "va.png", europe),
 
-
-                new Country("USA", "usa.png", northAmerica)
+                // Oceania
+                new Country("Australia", "au.png", oceania),
+                new Country("Cook Islands", "ck.png", oceania),
+                new Country("East Timor", "tl.png", oceania),
+                new Country("Fiji", "fj.png", oceania),
+                new Country("Indonesia", "id.png", oceania),
+                new Country("Kiribati", "ki.png", oceania),
+                new Country("The Marshall Islands", "mh.png", oceania),
+                new Country("Micronesia", "fm.png", oceania),
+                new Country("Nauru", "nr.png", oceania),
+                new Country("New Zeland", "nz.png", oceania),
+                new Country("Niue", "nu.png", oceania),
+                new Country("Palau", "pw.png", oceania),
+                new Country("Papua New Guinea", "pg.png", oceania),
+                new Country("Samoa", "ws.png", oceania),
+                new Country("The Solomon Islands", "sb.png",oceania),
+                new Country("Tonga", "to.png", oceania),
+                new Country("Tuvalu", "tv.png", oceania),
+                new Country("Vanuatu", "vu.png", oceania)
         };
 
         SugarRecord.saveInTx(africa, northAmerica, southAmerica, asia, europe, oceania);
