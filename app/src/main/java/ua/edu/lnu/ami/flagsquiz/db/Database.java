@@ -149,7 +149,32 @@ public class Database {
                 new Country("The Solomon Islands", "sb.png",oceania),
                 new Country("Tonga", "to.png", oceania),
                 new Country("Tuvalu", "tv.png", oceania),
-                new Country("Vanuatu", "vu.png", oceania)
+                new Country("Vanuatu", "vu.png", oceania),
+
+                // North America
+                new Country("Antigua and Barbuda", "ag.png", northAmerica),
+                new Country("The Bahamas", "bs.png", northAmerica),
+                new Country("Barbados", "bb.png", northAmerica),
+                new Country("Belize", "bz.png", northAmerica),
+                new Country("Canada", "ca.png", northAmerica),
+                new Country("Costa Rica", "cr.png", northAmerica),
+                new Country("Cuba", "cu.png", northAmerica),
+                new Country("Dominica", "dm.png", northAmerica),
+                new Country("The Dominican Republic", "do.png", northAmerica),
+                new Country("El Salvador", "sv.png", northAmerica),
+                new Country("Grenada", "gd.png", northAmerica),
+                new Country("Guatemala", "gt.png", northAmerica),
+                new Country("Haiti", "ht.png", northAmerica),
+                new Country("Honduras", "hn.png", northAmerica),
+                new Country("Jamaica", "jm.png", northAmerica),
+                new Country("Mexico", "mx.png", northAmerica),
+                new Country("Nicaragua", "ni.png", northAmerica),
+                new Country("Panama", "pa.png", northAmerica),
+                new Country("Saint Kitts and Nevis", "kn.png", northAmerica),
+                new Country("Saint Lucia", "lc.png", northAmerica),
+                new Country("Saint Vincent", "vc.png", northAmerica),
+                new Country("Trinidad and Tobago", "tt.png", northAmerica),
+                new Country("The United States", "us.png", northAmerica)
         };
 
         SugarRecord.saveInTx(africa, northAmerica, southAmerica, asia, europe, oceania);
