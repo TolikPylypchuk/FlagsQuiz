@@ -76,7 +76,7 @@ public class Database {
             new Country("Ukraine", "ua.png", europe),
             new Country("The United Kingdom", "gb.png", europe),
             new Country("Vatican", "va.png", europe),
-            
+
 			new Country("USA", "usa.png", northAmerica)
 		};
 		
