@@ -6,7 +6,6 @@ import com.orm.SugarRecord;
 
 /**
  * <p>Represents a statistics about a quiz.</p>
- * @author Tolik Pylypchuk
  */
 public class Statistics extends SugarRecord {
 	

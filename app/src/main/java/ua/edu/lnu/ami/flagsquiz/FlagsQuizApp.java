@@ -16,7 +16,6 @@ import ua.edu.lnu.ami.flagsquiz.di.DaggerFlagsQuizAppComponent;
 
 /**
  * <p>Represents the FlagsQuiz application.</p>
- * @author Tolik Pylypchuk
  */
 public class FlagsQuizApp extends SugarApp implements HasActivityInjector, HasFragmentInjector {
 	
