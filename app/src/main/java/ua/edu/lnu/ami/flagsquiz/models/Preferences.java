@@ -6,6 +6,7 @@ import java.util.List;
  * <p>Represents the application preferences.</p>
  */
 public class Preferences {
+
 	
 	private int numQuestions;
 	private int numChoices;

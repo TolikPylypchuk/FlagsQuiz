@@ -5,7 +5,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import dagger.android.DaggerActivity;
@@ -38,6 +41,8 @@ public class MainActivity extends DaggerActivity {
 	void setStatisticsService(StatisticsService statisticsService) {
 		this.statisticsService = statisticsService;
 	}
+
+	Button settingsButton;
 	
 	@Override
 	@SuppressLint("SetTextI18n")
@@ -53,5 +58,14 @@ public class MainActivity extends DaggerActivity {
 		target.setText("# of regions: " + regions.size() + "; " +
 			"# of countries: " + countries.size() + "; " +
 			"# of stats entries: " + statistics.size());
+
+		settingsButton = findViewById(R.id.settingsButton);
+		settingsButton.setOnClickListener( new View.OnClickListener()
+		{
+			public void onClick (View v){
+				Intent intent = new Intent(MainActivity.this, QuizPreferenceActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 }
