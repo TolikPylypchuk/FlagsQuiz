@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * <p>Represents the application preferences.</p>
- * @author Tolik Pylypchuk
  */
 public class Preferences {
 	

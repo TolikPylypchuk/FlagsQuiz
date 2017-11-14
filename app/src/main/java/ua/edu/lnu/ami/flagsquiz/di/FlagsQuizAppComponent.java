@@ -14,7 +14,6 @@ import ua.edu.lnu.ami.flagsquiz.services.*;
  *     Represents a mediator between the {@link FlagsQuizAppModule} and classes
  *     that use the dependencies provided by the module.
  * </p>
- * @author Tolik Pylypchuk
  */
 @Component(modules = { AndroidInjectionModule.class, FlagsQuizAppModule.class })
 @Singleton
