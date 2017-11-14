@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-	<string name="app_name">FlagsQuiz</string>
-	
-	<string name="prefs_num_question_title"># of questions</string>
-	<string name="prefs_num_question_summary">Number of questions per quiz</string>
-	
-	<string name="prefs_num_choices_title"># of choices</string>
-	<string name="prefs_num_choices_summary">Number of choices per question</string>
-	
-	<string name="prefs_regions_title">Regions</string>
-	<string name="prefs_regions_summary">Regions used in the quizzes</string>
+    <string name="app_name">FlagsQuiz</string>
 
-	<string name="start">Start</string>
-	<string name="settings">Settings</string>
-	<string name="welcome">Welcome :)</string>
-	<string name="exit">Exit</string>
-	<string name="statistics">Statistics</string>
-	<string name="about">About</string>
+    <string name="prefs_num_question_title"># of questions</string>
+    <string name="prefs_num_question_summary">Number of questions per quiz</string>
+
+    <string name="prefs_num_choices_title"># of choices</string>
+    <string name="prefs_num_choices_summary">Number of choices per question</string>
+
+    <string name="prefs_regions_title">Regions</string>
+    <string name="prefs_regions_summary">Regions used in the quizzes</string>
+
+    <string name="start">Start</string>
+    <string name="settings">Settings</string>
+    <string name="welcome">Welcome :)</string>
+    <string name="exit">Exit</string>
+    <string name="statistics">Statistics</string>
+    <string name="about">About</string>
 </resources>
