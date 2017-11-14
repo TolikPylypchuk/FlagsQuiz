@@ -6,19 +6,23 @@ import android.os.Bundle;
 import javax.inject.Inject;
 
 import ua.edu.lnu.ami.flagsquiz.R;
-import ua.edu.lnu.ami.flagsquiz.services.CountryService;
-import ua.edu.lnu.ami.flagsquiz.services.RegionService;
-import ua.edu.lnu.ami.flagsquiz.services.StatisticsService;
+import ua.edu.lnu.ami.flagsquiz.services.*;
 
 public class QuizActivity extends AppCompatActivity {
 
     private CountryService countryService;
+    private PreferencesService preferencesService;
     private RegionService regionService;
     private StatisticsService statisticsService;
 
     @Inject
     void setCountryService(CountryService countryService) {
         this.countryService = countryService;
+    }
+
+    @Inject
+    void setPreferencesService(PreferencesService preferencesService) {
+        this.preferencesService = preferencesService;
     }
 
     @Inject
