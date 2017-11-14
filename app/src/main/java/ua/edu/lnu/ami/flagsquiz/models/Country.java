@@ -5,7 +5,6 @@ import com.orm.dsl.Unique;
 
 /**
  * <p>Represents a country.</p>
- * @author Tolik Pylypchuk
  */
 public class Country extends SugarRecord {
 	

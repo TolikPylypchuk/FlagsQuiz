@@ -16,7 +16,6 @@ import ua.edu.lnu.ami.flagsquiz.services.impl.*;
 
 /**
  * <p>Represents a module which provides Dagger with necessary instances.</p>
- * @author Tolik Pylypchuk
  */
 @Module
 public abstract class FlagsQuizAppModule {
