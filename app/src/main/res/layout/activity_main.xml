@@ -48,6 +48,20 @@
 			android:text="@string/settings" />
 
 		<Button
+			android:id="@+id/statisticsButton"
+			style="@style/Widget.AppCompat.Button.Colored"
+			android:layout_width="200dp"
+			android:layout_height="60dp"
+			android:text="@string/statistics" />
+
+		<Button
+			android:id="@+id/aboutButton"
+			style="@style/Widget.AppCompat.Button.Colored"
+			android:layout_width="200dp"
+			android:layout_height="60dp"
+			android:text="@string/about" />
+
+		<Button
 			android:id="@+id/exitButton"
 			style="@style/Widget.AppCompat.Button.Colored"
 			android:layout_width="200dp"

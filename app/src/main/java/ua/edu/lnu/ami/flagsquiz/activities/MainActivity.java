@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import dagger.android.DaggerActivity;
@@ -44,7 +45,8 @@ public class MainActivity extends DaggerActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
+
 //	List<Region> regions = regionService.getAll();
 //	List<Country> countries = countryService.getAll();
 //	List<Statistics> statistics = statisticsService.getAll();
