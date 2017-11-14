@@ -1,28 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-					xmlns:tools="http://schemas.android.com/tools"
-					package="ua.edu.lnu.ami.flagsquiz">
-	
-	<application
-		android:allowBackup="true"
-		android:icon="@mipmap/ic_launcher"
-		android:label="@string/app_name"
-		android:name=".FlagsQuizApp"
-		android:roundIcon="@mipmap/ic_launcher_round"
-		android:supportsRtl="true"
-		android:theme="@style/AppTheme"
-		tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-		<activity android:name=".activities.MainActivity">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN"/>
-				<category android:name="android.intent.category.LAUNCHER"/>
-			</intent-filter>
-		</activity>
-		
-		<meta-data android:name="DATABASE" android:value="flagsquiz.db" />
-		<meta-data android:name="VERSION" android:value="1" />
-		<meta-data android:name="QUERY_LOG" android:value="false" />
-		<meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="ua.edu.lnu.ami.flagsquiz.models" />
-	</application>
+    xmlns:tools="http://schemas.android.com/tools"
+    package="ua.edu.lnu.ami.flagsquiz">
+
+    <application
+        android:name=".FlagsQuizApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".activities.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="DATABASE"
+            android:value="flagsquiz.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="false" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="ua.edu.lnu.ami.flagsquiz.models" />
+
+        <activity android:name=".activities.AboutActivity" />
+        <activity android:name=".activities.StatisticsActivity" />
+        <activity android:name=".activities.QuizActivity"></activity>
+    </application>
 
 </manifest>
