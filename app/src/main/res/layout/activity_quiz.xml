@@ -27,6 +27,7 @@
             android:id="@+id/flag"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background=""
             android:contentDescription="@string/flag_description"
             app:layout_constraintHorizontal_bias="0.5" />
 
