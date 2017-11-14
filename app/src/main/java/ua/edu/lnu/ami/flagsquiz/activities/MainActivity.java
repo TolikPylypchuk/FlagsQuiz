@@ -1,20 +1,11 @@
 package ua.edu.lnu.ami.flagsquiz.activities;
 
-import java.util.List;
+import android.os.Bundle;
 
 import javax.inject.Inject;
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
-
 import dagger.android.DaggerActivity;
-
 import ua.edu.lnu.ami.flagsquiz.R;
-import ua.edu.lnu.ami.flagsquiz.models.Country;
-import ua.edu.lnu.ami.flagsquiz.models.Region;
-import ua.edu.lnu.ami.flagsquiz.models.Statistics;
 import ua.edu.lnu.ami.flagsquiz.services.CountryService;
 import ua.edu.lnu.ami.flagsquiz.services.RegionService;
 import ua.edu.lnu.ami.flagsquiz.services.StatisticsService;
@@ -41,7 +32,6 @@ public class MainActivity extends DaggerActivity {
 	}
 	
 	@Override
-	@SuppressLint("SetTextI18n")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
