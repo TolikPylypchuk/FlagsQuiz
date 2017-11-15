@@ -108,6 +108,7 @@ public class QuizActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        /*
         Pair<Drawable, String> country = null;
         try {
             country = this.getRandomCountryByRegion("Europe");
@@ -122,6 +123,7 @@ public class QuizActivity extends Activity {
 
         TextView question = (TextView) findViewById(R.id.question);
         question.setText("Question 1/10");
+        */
     }
 
     private Pair<Drawable, String> getRandomCountryByRegion(String region)
