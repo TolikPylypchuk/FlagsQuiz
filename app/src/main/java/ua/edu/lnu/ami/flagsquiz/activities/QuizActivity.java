@@ -108,29 +108,29 @@ public class QuizActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        Pair<Drawable, String> country = null;
-        try {
-            country = this.getRandomCountryByRegion("Europe");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        this.setCountryCorrectName(country.second);
-
-        ImageView flag = (ImageView) findViewById(R.id.flag);
-        flag.setBackground(country.first);
-
-        TextView question = (TextView) findViewById(R.id.question);
-        question.setText("Question 1/10");
+//        Pair<Drawable, String> country = null;
+//        try {
+//            country = this.getRandomCountryByRegion("Europe");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        this.setCountryCorrectName(country.second);
+//
+//        ImageView flag = (ImageView) findViewById(R.id.flag);
+//        flag.setBackground(country.first);
+//
+//        TextView question = (TextView) findViewById(R.id.question);
+//        question.setText("Question 1/10");
     }
 
-    private Pair<Drawable, String> getRandomCountryByRegion(String region)
-            throws IOException {
-
-        Drawable flag = Drawable.createFromStream(
-                getAssets().open("images/uk.png"), null);
-
-        return new Pair<Drawable, String>(flag, "Ukraine");
-    }
+//    private Pair<Drawable, String> getRandomCountryByRegion(String region)
+//            throws IOException {
+//
+//        Drawable flag = Drawable.createFromStream(
+//                getAssets().open("images/uk.png"), null);
+//
+//        return new Pair<Drawable, String>(flag, "Ukraine");
+//    }
 
 }
