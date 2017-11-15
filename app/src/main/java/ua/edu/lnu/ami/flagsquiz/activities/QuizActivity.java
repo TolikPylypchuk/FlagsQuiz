@@ -113,8 +113,7 @@ public class QuizActivity extends Activity {
     }
 
     public void backToMenu(View view) {
-        Intent intent = new Intent(QuizActivity.this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     private Pair<Drawable, String> getRandomCountry()

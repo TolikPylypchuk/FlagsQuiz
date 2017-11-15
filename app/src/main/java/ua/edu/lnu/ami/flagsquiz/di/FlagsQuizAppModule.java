@@ -25,9 +25,6 @@ public abstract class FlagsQuizAppModule {
 	@Binds
 	@Singleton
 	public abstract Application application(FlagsQuizApp app);
-	
-	@ContributesAndroidInjector
-	public abstract MainActivity contributeMainActivityInjector();
 
 	@ContributesAndroidInjector
 	public abstract QuizActivity contributeQuizActivityInjector();

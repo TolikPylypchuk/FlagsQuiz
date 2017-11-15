@@ -5,15 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import dagger.android.AndroidInjection;
 import ua.edu.lnu.ami.flagsquiz.R;
 
 public class MainActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		AndroidInjection.inject(this);
-
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	}
