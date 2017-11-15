@@ -38,35 +38,40 @@
 			style="@style/Widget.AppCompat.Button.Colored"
 			android:layout_width="200dp"
 			android:layout_height="60dp"
-			android:text="@string/start" />
+			android:text="@string/start"
+			android:onClick="startQuiz" />
 
 		<Button
 			android:id="@+id/settingsButton"
 			style="@style/Widget.AppCompat.Button.Colored"
 			android:layout_width="200dp"
 			android:layout_height="60dp"
-			android:text="@string/settings" />
+			android:text="@string/settings"
+			android:onClick="settings" />
 
 		<Button
 			android:id="@+id/statisticsButton"
 			style="@style/Widget.AppCompat.Button.Colored"
 			android:layout_width="200dp"
 			android:layout_height="60dp"
-			android:text="@string/statistics" />
+			android:text="@string/statistics"
+			android:onClick="statistics" />
 
 		<Button
 			android:id="@+id/aboutButton"
 			style="@style/Widget.AppCompat.Button.Colored"
 			android:layout_width="200dp"
 			android:layout_height="60dp"
-			android:text="@string/about" />
+			android:text="@string/about"
+			android:onClick="about" />
 
 		<Button
 			android:id="@+id/exitButton"
 			style="@style/Widget.AppCompat.Button.Colored"
 			android:layout_width="200dp"
 			android:layout_height="60dp"
-			android:text="@string/exit" />
+			android:text="@string/exit"
+			android:onClick="exit"/>
 	</LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

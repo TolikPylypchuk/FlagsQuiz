@@ -3,10 +3,9 @@ package ua.edu.lnu.ami.flagsquiz.activities;
 import android.app.Activity;
 import android.os.Bundle;
 
-import dagger.android.DaggerActivity;
 import ua.edu.lnu.ami.flagsquiz.R;
 
-public class QuizActivity extends DaggerActivity {
+public class QuizActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
