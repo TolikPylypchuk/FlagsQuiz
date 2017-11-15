@@ -6,7 +6,6 @@ import ua.edu.lnu.ami.flagsquiz.models.Region;
 
 /**
  * <p>Represents a service for getting regions from the database.</p>
- * @author Tolik Pylypchuk
  */
 public interface RegionService {
 	

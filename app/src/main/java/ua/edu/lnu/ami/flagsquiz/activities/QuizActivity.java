@@ -13,11 +13,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjection;
 import ua.edu.lnu.ami.flagsquiz.R;
+import ua.edu.lnu.ami.flagsquiz.models.Country;
 import ua.edu.lnu.ami.flagsquiz.services.CountryService;
 import ua.edu.lnu.ami.flagsquiz.services.PreferencesService;
 import ua.edu.lnu.ami.flagsquiz.services.RegionService;
@@ -59,30 +61,6 @@ public class QuizActivity extends Activity {
         this.statisticsService = statisticsService;
     }
 
-    public String getCountryCorrectName() {
-        return countryCorrectName;
-    }
-
-    public void setCountryCorrectName(String countryCorrectName) {
-        this.countryCorrectName = countryCorrectName;
-    }
-
-    public Integer getQuestionNumber() {
-        return questionNumber;
-    }
-
-    public void setQuestionNumber(Integer questionNumber) {
-        this.questionNumber = questionNumber;
-    }
-
-    public Integer getAttemptsCounter() {
-        return attemptsCounter;
-    }
-
-    public void setAttemptsCounter(Integer attemptsCounter) {
-        this.attemptsCounter = attemptsCounter;
-    }
-
     public Integer getQuestionsAmount() {
         return questionsAmount;
     }
@@ -111,25 +89,27 @@ public class QuizActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         regions.add("Europe");
 
+        AndroidInjection.inject(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
         TextView question = (TextView) findViewById(R.id.question);
         question.setText("Question 1/" + this.questionsAmount);
 
-        /*
         Pair<Drawable, String> country = null;
         try {
-            country = this.getRandomCountryByRegion("Europe");
+            country = this.getRandomCountry();
         } catch (IOException e) {
             e.printStackTrace();
+            finish();
+            System.exit(0);
         }
 
-        this.setCountryCorrectName(country.second);
+        this.countryCorrectName = country.second;
 
         ImageView flag = (ImageView) findViewById(R.id.flag);
         flag.setBackground(country.first);
-        */
     }
 
     public void backToMenu(View view) {
@@ -137,13 +117,20 @@ public class QuizActivity extends Activity {
         startActivity(intent);
     }
 
-    private Pair<Drawable, String> getRandomCountryByRegion(String region)
+    private Pair<Drawable, String> getRandomCountry()
             throws IOException {
+        int regionsNumber = ThreadLocalRandom.current().nextInt(0, this.regions.size());
+        String regionName = this.regions.get(regionsNumber);
 
-        InputStream fstream = getApplicationContext().getAssets().open("images/ua.png");
+        List<Country> countries = this.countryService.getByRegion(regionName);
+
+        int countriesNumber = ThreadLocalRandom.current().nextInt(0, countries.size());
+        Country country = countries.get(countriesNumber);
+
+        InputStream fstream = getAssets().open("flags/" + country.getImagePath());
         Drawable flag = Drawable.createFromStream(fstream, null);
 
-        return new Pair<Drawable, String>(flag, "Ukraine");
+        return new Pair<Drawable, String>(flag, country.getName());
     }
 
 }

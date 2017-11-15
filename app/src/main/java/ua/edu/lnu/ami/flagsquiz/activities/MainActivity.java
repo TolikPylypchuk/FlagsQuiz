@@ -7,12 +7,13 @@ import android.view.View;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjection;
 import ua.edu.lnu.ami.flagsquiz.R;
 import ua.edu.lnu.ami.flagsquiz.services.CountryService;
 import ua.edu.lnu.ami.flagsquiz.services.RegionService;
 import ua.edu.lnu.ami.flagsquiz.services.StatisticsService;
 
-public class MainActivity extends DaggerActivity {
+public class MainActivity extends Activity {
 	
 	private CountryService countryService;
 	private RegionService regionService;
@@ -35,6 +36,8 @@ public class MainActivity extends DaggerActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		AndroidInjection.inject(this);
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	}
