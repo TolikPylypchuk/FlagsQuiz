@@ -7,8 +7,15 @@
         Test your knowledge on this geography quiz to see how you do.
     </string>
     <string name="team">
-        Created by team Idontknowers.
-        Our team: </string>
+        Created by team Idontknowers.\n
+        Our team:\n\n
+        Anatoliy Pylypchyk\n
+        Natalia Slobodianiuk\n
+        Anastasia Kolomoets\n
+        Yaroslav Kormushyn\n
+        Yulia Zvizlo\n
+        Orysia Fitio\n
+    </string>
 
     <string name="prefs_num_question_title"># of questions</string>
     <string name="prefs_num_question_summary">Number of questions per quiz</string>
