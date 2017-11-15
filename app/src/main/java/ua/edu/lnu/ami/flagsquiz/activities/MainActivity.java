@@ -48,6 +48,7 @@ public class MainActivity extends Activity{
 		Intent intent = new Intent(MainActivity.this, QuizActivity.class);
 		startActivity(intent);
 	}
+
 	public void statistics(View view) {
 		Intent intent = new Intent(MainActivity.this, StatisticsActivity.class);
 		startActivity(intent);

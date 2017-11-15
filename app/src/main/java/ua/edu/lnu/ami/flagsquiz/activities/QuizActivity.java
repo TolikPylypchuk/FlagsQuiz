@@ -1,14 +1,19 @@
 package ua.edu.lnu.ami.flagsquiz.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Pair;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import javax.inject.Inject;
 
@@ -30,9 +35,9 @@ public class QuizActivity extends Activity {
     private Integer questionNumber = 1;
     private Integer attemptsCounter = 0;
 
-    private Integer questionsAmount;
-    private Integer answersAmount;
-    private List<String> regions;
+    private Integer questionsAmount = 10;
+    private Integer answersAmount = 6;
+    private List<String> regions = new ArrayList<>();
 
     @Inject
     void setCountryService(CountryService countryService) {
@@ -104,9 +109,13 @@ public class QuizActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        regions.add("Europe");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        TextView question = (TextView) findViewById(R.id.question);
+        question.setText("Question 1/" + this.questionsAmount);
 
         /*
         Pair<Drawable, String> country = null;
@@ -120,17 +129,19 @@ public class QuizActivity extends Activity {
 
         ImageView flag = (ImageView) findViewById(R.id.flag);
         flag.setBackground(country.first);
-
-        TextView question = (TextView) findViewById(R.id.question);
-        question.setText("Question 1/10");
         */
+    }
+
+    public void backToMenu(View view) {
+        Intent intent = new Intent(QuizActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
     private Pair<Drawable, String> getRandomCountryByRegion(String region)
             throws IOException {
 
-        Drawable flag = Drawable.createFromStream(
-                getAssets().open("images/uk.png"), null);
+        InputStream fstream = getApplicationContext().getAssets().open("images/ua.png");
+        Drawable flag = Drawable.createFromStream(fstream, null);
 
         return new Pair<Drawable, String>(flag, "Ukraine");
     }
