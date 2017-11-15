@@ -6,7 +6,7 @@ import android.os.Bundle;
 import dagger.android.DaggerActivity;
 import ua.edu.lnu.ami.flagsquiz.R;
 
-public class StatisticsActivity extends DaggerActivity {
+public class StatisticsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
