@@ -33,6 +33,8 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="ua.edu.lnu.ami.flagsquiz.models" />
 
+        <activity android:name=".activities.AboutActivity" />
+        <activity android:name=".activities.StatisticsActivity" />
         <activity android:name=".activities.QuizActivity"></activity>
     </application>
 

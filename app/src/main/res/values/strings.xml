@@ -2,6 +2,13 @@
 
 <resources>
     <string name="app_name">FlagsQuiz</string>
+    <string name="about_app">
+        Can you name the flags of the world?
+        Test your knowledge on this geography quiz to see how you do.
+    </string>
+    <string name="team">
+        Created by team Idontknowers.
+        Our team: </string>
 
     <string name="prefs_num_question_title"># of questions</string>
     <string name="prefs_num_question_summary">Number of questions per quiz</string>
