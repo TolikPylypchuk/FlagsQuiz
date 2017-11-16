@@ -158,14 +158,6 @@ public class QuizActivity extends Activity {
                 it++;
             }
         }
-
-        if (this.answersAmount == 6)
-        {
-            LinearLayout firstColumn = findViewById(R.id.countries1);
-            firstColumn.setScaleX((float)0.5);
-            LinearLayout secondColumn = findViewById(R.id.countries2);
-            secondColumn.setScaleX((float)0.5);
-        }
     }
 
     public void backToMenu(View view) {
