@@ -18,7 +18,7 @@ import ua.edu.lnu.ami.flagsquiz.R;
 import ua.edu.lnu.ami.flagsquiz.models.Statistics;
 import ua.edu.lnu.ami.flagsquiz.services.StatisticsService;
 
-public class StatisticsActivity extends DaggerActivity {
+public class StatisticsActivity extends Activity {
 
     private StatisticsService statisticsService;
     TableLayout table;
