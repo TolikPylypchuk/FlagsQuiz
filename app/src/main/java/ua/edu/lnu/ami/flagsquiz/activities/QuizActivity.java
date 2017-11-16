@@ -1,6 +1,7 @@
 package ua.edu.lnu.ami.flagsquiz.activities;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Pair;
@@ -247,6 +248,7 @@ public class QuizActivity extends Activity {
         {
             if (this.checkIfAnswerCorrect(answerButton))
             {
+                answerButton.setTextColor(Color.parseColor("#9CCC65"));
                 this.questionNumber++;
             }
             else
@@ -255,6 +257,9 @@ public class QuizActivity extends Activity {
 
                 ImageView flag = findViewById(R.id.flag);
                 flag.startAnimation(shaking);
+
+                answerButton.setTextColor(Color.parseColor("#EF5350"));
+                answerButton.setEnabled(false);
             }
 
             this.attemptsCounter++;
