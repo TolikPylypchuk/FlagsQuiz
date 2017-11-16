@@ -1,3 +1,4 @@
+
 package ua.edu.lnu.ami.flagsquiz.activities;
 
 import android.app.Application;
