@@ -18,4 +18,11 @@
     <string name="about">About</string>
     <string name="welcome">Welcome :)</string>
     <string name="exit">Exit</string>
+
+    <string name="header_date">Date</string>
+    <string name="header_n_questions">Questions</string>
+    <string name="header_n_attempts">Attempts</string>
+    <string name="header_percentage">Percentage</string>
+
+    <string name="button_exit">Exit</string>
 </resources>
