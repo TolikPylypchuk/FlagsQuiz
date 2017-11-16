@@ -11,6 +11,7 @@ import dagger.android.ContributesAndroidInjector;
 
 import ua.edu.lnu.ami.flagsquiz.FlagsQuizApp;
 import ua.edu.lnu.ami.flagsquiz.activities.MainActivity;
+import ua.edu.lnu.ami.flagsquiz.activities.QuizPreferenceActivity;
 import ua.edu.lnu.ami.flagsquiz.services.*;
 import ua.edu.lnu.ami.flagsquiz.services.impl.*;
 
@@ -26,6 +27,9 @@ public abstract class FlagsQuizAppModule {
 	
 	@ContributesAndroidInjector
 	public abstract MainActivity contributeMainActivityInjector();
+
+	@ContributesAndroidInjector
+	public abstract QuizPreferenceActivity.QuizPreferenceFragment contributePreferenceFragmentInjector();
 	
 	@Provides
 	@Singleton
