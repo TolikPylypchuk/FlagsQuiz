@@ -3,6 +3,7 @@ package ua.edu.lnu.ami.flagsquiz.activities;
 import android.app.Application;
 import android.app.SharedElementCallback;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -77,7 +78,7 @@ public class QuizPreferenceActivity extends PreferenceActivity {
                     questionsNumberPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                         @Override
                         public boolean onPreferenceChange(Preference preference, Object o) {
-                            editor.putInt(MainActivity.preferencesService.NUM_QUESTIONS, (Integer) o);
+                            editor.putInt(PreferencesService.NUM_QUESTIONS, (Integer) o);
                             editor.commit();
 
                             return true;
@@ -87,7 +88,7 @@ public class QuizPreferenceActivity extends PreferenceActivity {
                     choicesNumberPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                         @Override
                         public boolean onPreferenceChange(Preference preference, Object o) {
-                            editor.putInt(MainActivity.preferencesService.NUM_CHOICES, (Integer) o);
+                            editor.putInt(PreferencesService.NUM_CHOICES, (Integer) o);
                             editor.commit();
 
                             return true;
@@ -97,7 +98,7 @@ public class QuizPreferenceActivity extends PreferenceActivity {
                     regionsPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                         @Override
                         public boolean onPreferenceChange(Preference preference, Object o) {
-                            editor.putStringSet(MainActivity.preferencesService.REGIONS,
+                            editor.putStringSet(PreferencesService.REGIONS,
                                     (Set<String>) o);
                             editor.commit();
 
@@ -105,6 +106,7 @@ public class QuizPreferenceActivity extends PreferenceActivity {
                         }
                     });
                 }
+
             });
 
             cancelButton.setOnClickListener(new View.OnClickListener()
