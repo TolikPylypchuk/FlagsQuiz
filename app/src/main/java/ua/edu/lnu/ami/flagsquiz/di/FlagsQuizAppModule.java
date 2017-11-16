@@ -34,8 +34,8 @@ public abstract class FlagsQuizAppModule {
 
 	@Provides
 	@Singleton
-	public static CountryService provideCountryService() {
-		return new CountryServiceImpl();
+	public static CountryService provideCountryService(RegionService service) {
+		return new CountryServiceImpl(service);
 	}
 	
 	@Provides
