@@ -1,13 +1,15 @@
 package ua.edu.lnu.ami.flagsquiz.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -132,10 +134,54 @@ public class QuizActivity extends Activity {
                 it++;
             }
         }
+
+        if (this.answersAmount == 6)
+        {
+            LinearLayout firstColumn = findViewById(R.id.countries1);
+            firstColumn.setScaleX((float)0.5);
+            LinearLayout secondColumn = findViewById(R.id.countries2);
+            secondColumn.setScaleX((float)0.5);
+        }
     }
 
     public void backToMenu(View view) {
         finish();
+    }
+
+    public void country1Chosen(View view) {
+        this.checkAnswer(1);
+    }
+
+    public void country2Chosen(View view) {
+        this.checkAnswer(2);
+    }
+
+    public void country3Chosen(View view) {
+        this.checkAnswer(3);
+    }
+
+    public void country4Chosen(View view) {
+        this.checkAnswer(4);
+    }
+
+    public void country5Chosen(View view) {
+        this.checkAnswer(5);
+    }
+
+    public void country6Chosen(View view) {
+        this.checkAnswer(6);
+    }
+
+    public void country7Chosen(View view) {
+        this.checkAnswer(7);
+    }
+
+    public void country8Chosen(View view) {
+        this.checkAnswer(8);
+    }
+
+    public void country9Chosen(View view) {
+        this.checkAnswer(9);
     }
 
     private Pair<Drawable, String> getRandomCountry()
@@ -175,4 +221,39 @@ public class QuizActivity extends Activity {
         return  answers;
     }
 
+    private void checkAnswer(int buttonNumber)
+    {
+        String buttonID = "country" + buttonNumber;
+        int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
+        Button answerButton = findViewById(resID);
+
+        if (!this.isAlreadyChosen(answerButton))
+        {
+            if (this.checkIfAnswerCorrect(answerButton))
+            {
+                this.questionNumber++;
+            }
+            else
+            {
+                Animation shaking = AnimationUtils.loadAnimation(this, R.anim.shaking);
+
+                ImageView flag = findViewById(R.id.flag);
+                flag.startAnimation(shaking);
+            }
+
+            this.attemptsCounter++;
+        }
+    }
+
+    private boolean isAlreadyChosen(Button answerButton)
+    {
+        return false;
+    }
+
+    private boolean checkIfAnswerCorrect(Button answerButton)
+    {
+        String answer = String.valueOf(answerButton.getText());
+
+        return answer.equals(this.countryCorrectName);
+    }
 }
