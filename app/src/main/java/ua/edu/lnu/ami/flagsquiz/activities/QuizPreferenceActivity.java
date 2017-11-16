@@ -70,11 +70,12 @@ public class QuizPreferenceActivity extends PreferenceActivity {
             Button cancelButton = view.findViewById(R.id.cancelButton);
             Button resetStatsButton = view.findViewById(R.id.resetStatsButton);
 
+            SharedPreferences.Editor editor =
+                    MainActivity.sharedPreferences.edit();
+
             saveButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    SharedPreferences.Editor editor =
-                            MainActivity.sharedPreferences.edit();
 
                     questionsNumberPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                         @Override
@@ -106,6 +107,10 @@ public class QuizPreferenceActivity extends PreferenceActivity {
                             return true;
                         }
                     });
+
+                    Intent i = new Intent(getActivity(), MainActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
                 }
 
             });
@@ -114,17 +119,22 @@ public class QuizPreferenceActivity extends PreferenceActivity {
             {
                 @Override
                 public void onClick(View view) {
-                    SharedPreferences.Editor editor =
-                            MainActivity.sharedPreferences.edit();
 
                     editor.putInt(PreferencesService.NUM_QUESTIONS, 10);
                     editor.putInt(PreferencesService.NUM_CHOICES, 3);
                     List<Region> regions = regionService.getAll();
                     Set<String> regionSet = new HashSet<String>();
+
                     for (int i = 0; i < regions.size(); i++){
                         regionSet.add(regions.get(i).getName());
                     }
                     editor.putStringSet(PreferencesService.REGIONS, regionSet);
+
+                    editor.commit();
+
+                    Intent i = new Intent(getActivity(), MainActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
                 }
             });
 

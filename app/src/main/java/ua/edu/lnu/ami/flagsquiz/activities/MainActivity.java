@@ -1,10 +1,13 @@
 package ua.edu.lnu.ami.flagsquiz.activities;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.inject.Inject;
 
+import android.app.Application;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -25,11 +28,12 @@ import ua.edu.lnu.ami.flagsquiz.services.RegionService;
 import ua.edu.lnu.ami.flagsquiz.services.StatisticsService;
 
 public class MainActivity extends DaggerActivity {
-	
+
+	private Application application;
 	private CountryService countryService;
 	private RegionService regionService;
 	private StatisticsService statisticsService;
-	static PreferencesService preferencesService;
+    static PreferencesService preferencesService;
 	static SharedPreferences sharedPreferences;
 
 	@Inject
@@ -54,6 +58,12 @@ public class MainActivity extends DaggerActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		this.application = Objects.requireNonNull(
+				application, "The application must not be null.");
+
+		sharedPreferences = application.getSharedPreferences(
+						PreferencesService.PREFERENCES_NAME, Context.MODE_PRIVATE);
 
 		List<Region> regions = regionService.getAll();
 		List<Country> countries = countryService.getAll();
