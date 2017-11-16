@@ -29,12 +29,14 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:layout_marginTop="50dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/flag">
+        app:layout_constraintTop_toBottomOf="@id/flag"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
 
         <LinearLayout
@@ -47,24 +49,27 @@
                 android:id="@+id/country1"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="10sp" />
 
             <Button
                 android:id="@+id/country2"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="10sp" />
 
             <Button
                 android:id="@+id/country3"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="10sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/countries2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -72,24 +77,27 @@
                 android:id="@+id/country4"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="10sp" />
 
             <Button
                 android:id="@+id/country5"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="10sp" />
 
             <Button
                 android:id="@+id/country6"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="10sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/countries3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -97,19 +105,22 @@
                 android:id="@+id/country7"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="10sp" />
 
             <Button
                 android:id="@+id/country8"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="10sp" />
 
             <Button
                 android:id="@+id/country9"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="10sp" />
         </LinearLayout>
 
     </LinearLayout>

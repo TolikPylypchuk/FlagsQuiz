@@ -6,8 +6,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -111,6 +114,30 @@ public class QuizActivity extends Activity {
 
         ImageView flag = (ImageView) findViewById(R.id.flag);
         flag.setBackground(country.first);
+
+        LinearLayout firstColumn = findViewById(R.id.countries1);
+        LinearLayout secondColumn = findViewById(R.id.countries2);
+        LinearLayout thirdColumn = findViewById(R.id.countries3);
+
+        switch (answersAmount) {
+            case 3:
+                firstColumn.setVisibility(View.VISIBLE);
+                secondColumn.setVisibility(View.GONE);
+                thirdColumn.setVisibility(View.GONE);
+                break;
+            case 6:
+                firstColumn.setVisibility(View.VISIBLE);
+                secondColumn.setVisibility(View.VISIBLE);
+                thirdColumn.setVisibility(View.GONE);
+
+                break;
+            case 9:
+                firstColumn.setVisibility(View.VISIBLE);
+                secondColumn.setVisibility(View.VISIBLE);
+                thirdColumn.setVisibility(View.VISIBLE);
+
+                break;
+        }
 
         int correctAnswerNumber = ThreadLocalRandom.current().nextInt(1, this.answersAmount + 1);
         String correctAnswerButtonID = "country" + correctAnswerNumber;
