@@ -7,6 +7,7 @@ import android.view.View;
 
 import javax.inject.Inject;
 
+import dagger.android.DaggerActivity;
 import ua.edu.lnu.ami.flagsquiz.R;
 import ua.edu.lnu.ami.flagsquiz.services.CountryService;
 import ua.edu.lnu.ami.flagsquiz.services.RegionService;
