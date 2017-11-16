@@ -1,6 +1,8 @@
 package ua.edu.lnu.ami.flagsquiz.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -13,9 +15,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.orm.SugarRecord;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -24,6 +29,7 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjection;
 import ua.edu.lnu.ami.flagsquiz.R;
 import ua.edu.lnu.ami.flagsquiz.models.Country;
+import ua.edu.lnu.ami.flagsquiz.models.Statistics;
 import ua.edu.lnu.ami.flagsquiz.services.CountryService;
 import ua.edu.lnu.ami.flagsquiz.services.PreferencesService;
 import ua.edu.lnu.ami.flagsquiz.services.RegionService;
@@ -41,8 +47,8 @@ public class QuizActivity extends Activity {
     private Integer questionNumber = 1;
     private Integer attemptsCounter = 0;
 
-    private Integer questionsAmount = 10;
-    private Integer answersAmount = 6;
+    private Integer questionsAmount = 3;
+    private Integer answersAmount = 9;
     private List<String> regions = new ArrayList<>();
 
     @Inject
@@ -194,7 +200,7 @@ public class QuizActivity extends Activity {
             do {
                 countriesNumber = ThreadLocalRandom.current().nextInt(0, countries.size());
                 countryName = countries.get(countriesNumber).getName();
-            } while (answers.contains(countryName));
+            } while (answers.contains(countryName) || countryName.equals(this.countryCorrectName));
 
             answers.add(countryName);
         }
@@ -208,35 +214,34 @@ public class QuizActivity extends Activity {
         int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
         Button answerButton = findViewById(resID);
 
-        if (!this.isAlreadyChosen(answerButton))
+        if (this.checkIfAnswerCorrect(answerButton))
         {
-            if (this.checkIfAnswerCorrect(answerButton))
+            answerButton.setTextColor(Color.parseColor("#9CCC65"));
+
+            this.questionNumber++;
+
+            if (this.questionNumber <= this.questionsAmount)
             {
-                answerButton.setTextColor(Color.parseColor("#9CCC65"));
-
-                this.questionNumber++;
-
                 this.resetButtons();
                 this.getNextQuestion();
             }
             else
             {
-                Animation shaking = AnimationUtils.loadAnimation(this, R.anim.shaking);
-
-                ImageView flag = findViewById(R.id.flag);
-                flag.startAnimation(shaking);
-
-                answerButton.setTextColor(Color.parseColor("#EF5350"));
-                answerButton.setEnabled(false);
+                this.endQuiz();
             }
-
-            this.attemptsCounter++;
         }
-    }
+        else
+        {
+            Animation shaking = AnimationUtils.loadAnimation(this, R.anim.shaking);
 
-    private boolean isAlreadyChosen(Button answerButton)
-    {
-        return false;
+            ImageView flag = findViewById(R.id.flag);
+            flag.startAnimation(shaking);
+
+            answerButton.setTextColor(Color.parseColor("#EF5350"));
+            answerButton.setEnabled(false);
+        }
+
+        this.attemptsCounter++;
     }
 
     private boolean checkIfAnswerCorrect(Button answerButton)
@@ -262,7 +267,7 @@ public class QuizActivity extends Activity {
 
         this.countryCorrectName = country.second;
 
-        ImageView flag = (ImageView) findViewById(R.id.flag);
+        ImageView flag = findViewById(R.id.flag);
         flag.setBackground(country.first);
 
         int correctAnswerNumber = ThreadLocalRandom.current().nextInt(1, this.answersAmount + 1);
@@ -299,5 +304,27 @@ public class QuizActivity extends Activity {
             answerButton.setTextColor(Color.parseColor("#000000"));
             answerButton.setEnabled(true);
         }
+    }
+
+    private void endQuiz()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(QuizActivity.this);
+        builder.setTitle("Quiz finished")
+                .setMessage(
+                        "Here is the statistics for this game. Questions: " + this.questionsAmount +
+                                ". Attempts: " + this.attemptsCounter +
+                                ". Rate: " + (int)((((double)this.questionsAmount / this.attemptsCounter)) * 100) + "%")
+                .setCancelable(false)
+                .setNegativeButton("OK",
+                        (dialog, id) -> {
+                            dialog.cancel();
+                            finish();
+                        });
+
+        Statistics statistics = new Statistics(new Date(), this.questionsAmount, this.attemptsCounter);
+        SugarRecord.save(statistics);
+
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
