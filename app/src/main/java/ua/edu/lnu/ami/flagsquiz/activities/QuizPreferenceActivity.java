@@ -27,10 +27,9 @@ public class QuizPreferenceActivity extends PreferenceActivity {
         getFragmentManager()
                 .beginTransaction()
                 .replace(android.R.id.content, new QuizPreferenceFragment()).commit();
+        setContentView(R.layout.preferences_activity);
 
     }
-
-
 
     public static class QuizPreferenceFragment extends PreferenceFragment
     {
@@ -43,9 +42,6 @@ public class QuizPreferenceActivity extends PreferenceActivity {
         {
             super.onCreate(savedInstanceState);
 
-
-            //setContentView(R.layout.preferences_activity);
-
             getPreferenceManager().setSharedPreferencesName(PreferencesService.PREFERENCES_NAME);
             addPreferencesFromResource(R.xml.flags_quiz_preferences);
 
@@ -55,9 +51,9 @@ public class QuizPreferenceActivity extends PreferenceActivity {
             ListPreference questionsNumberPreference = (ListPreference)findPreference("num_questions");
             ListPreference choicesNumberPreference = (ListPreference)findPreference("num_choices");
 
-            //saveButton = findViewById(R.id.saveButton);
-            //cancelButton = findViewById(R.id.cancelButton);
-            //resetStatsButton = findViewById(R.id.resetStatsButton);
+            saveButton.findViewById(R.id.saveButton);
+            cancelButton.findViewById(R.id.cancelButton);
+            resetStatsButton.findViewById(R.id.resetStatsButton);
 
             saveButton.setOnClickListener(new View.OnClickListener() {
                                               @Override
