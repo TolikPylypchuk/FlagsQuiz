@@ -37,6 +37,11 @@ public class MainActivity extends DaggerActivity {
 	static SharedPreferences sharedPreferences;
 
 	@Inject
+	void setApplication(Application application){
+		this.application = application;
+	}
+
+	@Inject
 	void setCountryService(CountryService countryService) {
 		this.countryService = countryService;
 	}
