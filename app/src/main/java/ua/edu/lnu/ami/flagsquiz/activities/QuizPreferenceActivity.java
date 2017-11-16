@@ -4,6 +4,7 @@ package ua.edu.lnu.ami.flagsquiz.activities;
 import android.app.Application;
 import android.app.SharedElementCallback;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -17,10 +18,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
 import ua.edu.lnu.ami.flagsquiz.R;
+import ua.edu.lnu.ami.flagsquiz.models.Region;
 import ua.edu.lnu.ami.flagsquiz.services.PreferencesService;
+import ua.edu.lnu.ami.flagsquiz.services.RegionService;
 
 public class QuizPreferenceActivity extends PreferenceActivity {
 
@@ -35,82 +43,88 @@ public class QuizPreferenceActivity extends PreferenceActivity {
 
     public static class QuizPreferenceFragment extends PreferenceFragment
     {
-        private Button saveButton;
-        private Button cancelButton;
-        private Button resetStatsButton;
+        RegionService regionService;
+        PreferencesService preferencesService;
+
+        @Inject
+        public void setRegionService(RegionService regionService) {
+            this.regionService = regionService;
+        }
+
+        @Inject
+        public void setPreferencesService(PreferencesService preferencesService) {
+            this.preferencesService = preferencesService;
+        }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.preferences_activity, container, false);
-        }
-
-        @Override
-        public void onCreate(final Bundle savedInstanceState)
-        {
-            super.onCreate(savedInstanceState);
-
-            getPreferenceManager().setSharedPreferencesName(PreferencesService.PREFERENCES_NAME);
-            addPreferencesFromResource(R.xml.flags_quiz_preferences);
+            View view = inflater.inflate(R.layout.preferences_activity, container, false);
 
             MultiSelectListPreference regionsPreference = (MultiSelectListPreference)findPreference("regions");
-            MainActivity.preferencesService.populateRegions(regionsPreference);
+            preferencesService.populateRegions(regionsPreference);
 
             ListPreference questionsNumberPreference = (ListPreference)findPreference("num_questions");
             ListPreference choicesNumberPreference = (ListPreference)findPreference("num_choices");
-
-            saveButton.findViewById(R.id.saveButton);
-            cancelButton.findViewById(R.id.cancelButton);
-            resetStatsButton.findViewById(R.id.resetStatsButton);
+            Button saveButton = view.findViewById(R.id.saveButton);
+            Button cancelButton = view.findViewById(R.id.cancelButton);
+            Button resetStatsButton = view.findViewById(R.id.resetStatsButton);
 
             saveButton.setOnClickListener(new View.OnClickListener() {
-                                              @Override
-                                              public void onClick(View view) {
-                                                  SharedPreferences.Editor editor =
-                                                          MainActivity.sharedPreferences.edit();
+                @Override
+                public void onClick(View view) {
+                    SharedPreferences.Editor editor =
+                            MainActivity.sharedPreferences.edit();
 
-                                                  questionsNumberPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                                                      @Override
-                                                      public boolean onPreferenceChange(Preference preference, Object o) {
-                                                          editor.putInt(MainActivity.preferencesService.NUM_QUESTIONS, (Integer) o);
-                                                          editor.commit();
+                    questionsNumberPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                        @Override
+                        public boolean onPreferenceChange(Preference preference, Object o) {
+                            editor.putInt(PreferencesService.NUM_QUESTIONS, (Integer) o);
+                            editor.commit();
 
-                                                          return true;
-                                                      }
-                                                  });
+                            return true;
+                        }
+                    });
 
-                                                  choicesNumberPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                                                      @Override
-                                                      public boolean onPreferenceChange(Preference preference, Object o) {
-                                                          editor.putInt(MainActivity.preferencesService.NUM_CHOICES, (Integer) o);
-                                                          editor.commit();
+                    choicesNumberPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                        @Override
+                        public boolean onPreferenceChange(Preference preference, Object o) {
+                            editor.putInt(PreferencesService.NUM_CHOICES, (Integer) o);
+                            editor.commit();
 
-                                                          return true;
-                                                      }
-                                                  });
+                            return true;
+                        }
+                    });
 
-                                                  regionsPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                                                      @Override
-                                                      public boolean onPreferenceChange(Preference preference, Object o) {
-                                                          editor.putStringSet(MainActivity.preferencesService.REGIONS,
-                                                                  (Set<String>) o);
-                                                          editor.commit();
+                    regionsPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                        @Override
+                        public boolean onPreferenceChange(Preference preference, Object o) {
+                            editor.putStringSet(PreferencesService.REGIONS,
+                                    (Set<String>) o);
+                            editor.commit();
 
-                                                          return true;
-                                                      }
-                                                  });
+                            return true;
+                        }
+                    });
+                }
 
-                                                  MainActivity.preferences =
-                                                          MainActivity.preferencesService.get(MainActivity.sharedPreferences);
-                                              }
-                                          });
+            });
 
             cancelButton.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View view) {
-                   MainActivity.preferences =
-                           MainActivity.preferencesService.get(MainActivity.sharedPreferences);
+                    SharedPreferences.Editor editor =
+                            MainActivity.sharedPreferences.edit();
+
+                    editor.putInt(PreferencesService.NUM_QUESTIONS, 10);
+                    editor.putInt(PreferencesService.NUM_CHOICES, 3);
+                    List<Region> regions = regionService.getAll();
+                    Set<String> regionSet = new HashSet<String>();
+                    for (int i = 0; i < regions.size(); i++){
+                        regionSet.add(regions.get(i).getName());
+                    }
+                    editor.putStringSet(PreferencesService.REGIONS, regionSet);
                 }
             });
 
@@ -121,6 +135,18 @@ public class QuizPreferenceActivity extends PreferenceActivity {
                 }
             });*/
 
+            return view;
+        }
+
+        @Override
+        public void onCreate(final Bundle savedInstanceState)
+        {
+            AndroidInjection.inject(this);
+
+            super.onCreate(savedInstanceState);
+
+            getPreferenceManager().setSharedPreferencesName(PreferencesService.PREFERENCES_NAME);
+            addPreferencesFromResource(R.xml.flags_quiz_preferences);
         }
     }
 }

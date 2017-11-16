@@ -31,7 +31,6 @@ public class MainActivity extends DaggerActivity {
 	private StatisticsService statisticsService;
 	static PreferencesService preferencesService;
 	static SharedPreferences sharedPreferences;
-	static Preferences preferences;
 
 	@Inject
 	void setCountryService(CountryService countryService) {
@@ -59,8 +58,6 @@ public class MainActivity extends DaggerActivity {
 		List<Region> regions = regionService.getAll();
 		List<Country> countries = countryService.getAll();
 		List<Statistics> statistics = statisticsService.getAll();
-
-		preferences = preferencesService.get(sharedPreferences);
 
 		settingsButton = findViewById(R.id.settingsButton);
 		settingsButton.setOnClickListener( new View.OnClickListener()
