@@ -11,7 +11,6 @@ import ua.edu.lnu.ami.flagsquiz.services.CountryService;
 
 /**
  * <p>Represents an implementation of a service for getting countries from the database.</p>
- * @author Tolik Pylypchuk
  */
 public class CountryServiceImpl implements CountryService {
 	
