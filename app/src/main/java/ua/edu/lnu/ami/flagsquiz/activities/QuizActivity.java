@@ -1,6 +1,7 @@
 package ua.edu.lnu.ami.flagsquiz.activities;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Pair;
@@ -158,14 +159,6 @@ public class QuizActivity extends Activity {
                 it++;
             }
         }
-
-        if (this.answersAmount == 6)
-        {
-            LinearLayout firstColumn = findViewById(R.id.countries1);
-            firstColumn.setScaleX((float)0.5);
-            LinearLayout secondColumn = findViewById(R.id.countries2);
-            secondColumn.setScaleX((float)0.5);
-        }
     }
 
     public void backToMenu(View view) {
@@ -255,6 +248,7 @@ public class QuizActivity extends Activity {
         {
             if (this.checkIfAnswerCorrect(answerButton))
             {
+                answerButton.setTextColor(Color.parseColor("#9CCC65"));
                 this.questionNumber++;
             }
             else
@@ -263,6 +257,9 @@ public class QuizActivity extends Activity {
 
                 ImageView flag = findViewById(R.id.flag);
                 flag.startAnimation(shaking);
+
+                answerButton.setTextColor(Color.parseColor("#EF5350"));
+                answerButton.setEnabled(false);
             }
 
             this.attemptsCounter++;
