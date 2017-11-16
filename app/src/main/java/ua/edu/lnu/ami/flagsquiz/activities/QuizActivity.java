@@ -28,25 +28,34 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjection;
 import ua.edu.lnu.ami.flagsquiz.R;
 import ua.edu.lnu.ami.flagsquiz.models.Country;
+import ua.edu.lnu.ami.flagsquiz.models.Preferences;
+import ua.edu.lnu.ami.flagsquiz.models.Region;
 import ua.edu.lnu.ami.flagsquiz.models.Statistics;
 import ua.edu.lnu.ami.flagsquiz.services.CountryService;
+import ua.edu.lnu.ami.flagsquiz.services.PreferencesService;
 
 public class QuizActivity extends Activity {
 
     private CountryService countryService;
+    private PreferencesService preferencesService;
 
     private String countryCorrectName;
 
     private Integer questionNumber = 1;
     private Integer attemptsCounter = 0;
 
-    private Integer questionsAmount = 3;
-    private Integer answersAmount = 9;
+    private Integer questionsAmount = 10;
+    private Integer answersAmount = 3;
     private List<String> regions = new ArrayList<>();
 
     @Inject
     void setCountryService(CountryService countryService) {
         this.countryService = countryService;
+    }
+
+    @Inject
+    void setPreferencesService(PreferencesService preferencesService) {
+        this.preferencesService = preferencesService;
     }
 
     public Integer getQuestionsAmount() {
@@ -75,7 +84,18 @@ public class QuizActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        regions.add("Europe");
+        /*
+        Preferences preferences = this.preferencesService.get();
+        this.questionsAmount = preferences.getNumQuestions();
+        this.answersAmount = preferences.getNumChoices();
+        List<Region> regionsClasses = preferences.getRegions();
+        for (Region region: regionsClasses)
+        {
+            this.regions.add(region.getName());
+        }
+        */
+
+        this.regions.add("Europe");
 
         AndroidInjection.inject(this);
 
