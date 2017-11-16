@@ -98,23 +98,6 @@ public class QuizActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        TextView question = (TextView) findViewById(R.id.question);
-        question.setText("Question 1/" + this.questionsAmount);
-
-        Pair<Drawable, String> country = null;
-        try {
-            country = this.getRandomCountry();
-        } catch (IOException e) {
-            e.printStackTrace();
-            finish();
-            System.exit(0);
-        }
-
-        this.countryCorrectName = country.second;
-
-        ImageView flag = (ImageView) findViewById(R.id.flag);
-        flag.setBackground(country.first);
-
         LinearLayout firstColumn = findViewById(R.id.countries1);
         LinearLayout secondColumn = findViewById(R.id.countries2);
         LinearLayout thirdColumn = findViewById(R.id.countries3);
@@ -139,26 +122,7 @@ public class QuizActivity extends Activity {
                 break;
         }
 
-        int correctAnswerNumber = ThreadLocalRandom.current().nextInt(1, this.answersAmount + 1);
-        String correctAnswerButtonID = "country" + correctAnswerNumber;
-        int correctAnswerResID = getResources().getIdentifier(correctAnswerButtonID, "id", getPackageName());
-        Button correctAnswerButton = findViewById(correctAnswerResID);
-        correctAnswerButton.setText(this.countryCorrectName);
-
-        int it = 0;
-        List<String> wrongAnswers = this.getAnswers();
-        for (int i = 1; i < answersAmount + 1; i++)
-        {
-            String buttonID = "country" + i;
-            int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
-            Button answerButton = findViewById(resID);
-
-            if (answerButton.getText().equals(""))
-            {
-                answerButton.setText(wrongAnswers.get(it));
-                it++;
-            }
-        }
+        this.getNextQuestion();
     }
 
     public void backToMenu(View view) {
@@ -249,7 +213,11 @@ public class QuizActivity extends Activity {
             if (this.checkIfAnswerCorrect(answerButton))
             {
                 answerButton.setTextColor(Color.parseColor("#9CCC65"));
+
                 this.questionNumber++;
+
+                this.resetButtons();
+                this.getNextQuestion();
             }
             else
             {
@@ -276,5 +244,60 @@ public class QuizActivity extends Activity {
         String answer = String.valueOf(answerButton.getText());
 
         return answer.equals(this.countryCorrectName);
+    }
+
+    private void getNextQuestion()
+    {
+        TextView question = (TextView) findViewById(R.id.question);
+        question.setText("Question " + this.questionNumber + "/" + this.questionsAmount);
+
+        Pair<Drawable, String> country = null;
+        try {
+            country = this.getRandomCountry();
+        } catch (IOException e) {
+            e.printStackTrace();
+            finish();
+            System.exit(0);
+        }
+
+        this.countryCorrectName = country.second;
+
+        ImageView flag = (ImageView) findViewById(R.id.flag);
+        flag.setBackground(country.first);
+
+        int correctAnswerNumber = ThreadLocalRandom.current().nextInt(1, this.answersAmount + 1);
+        String correctAnswerButtonID = "country" + correctAnswerNumber;
+        int correctAnswerResID = getResources().getIdentifier(correctAnswerButtonID, "id", getPackageName());
+        Button correctAnswerButton = findViewById(correctAnswerResID);
+        correctAnswerButton.setText(this.countryCorrectName);
+
+        int it = 0;
+        List<String> wrongAnswers = this.getAnswers();
+        for (int i = 1; i < answersAmount + 1; i++)
+        {
+            String buttonID = "country" + i;
+            int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
+            Button answerButton = findViewById(resID);
+
+            if (answerButton.getText().equals(""))
+            {
+                answerButton.setText(wrongAnswers.get(it));
+                it++;
+            }
+        }
+    }
+
+    private void resetButtons()
+    {
+        for (int i = 1; i < this.answersAmount + 1; i++)
+        {
+            String buttonID = "country" + i;
+            int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
+            Button answerButton = findViewById(resID);
+
+            answerButton.setText("");
+            answerButton.setTextColor(Color.parseColor("#000000"));
+            answerButton.setEnabled(true);
+        }
     }
 }
