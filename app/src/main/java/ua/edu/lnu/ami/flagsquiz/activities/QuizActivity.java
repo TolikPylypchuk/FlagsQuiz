@@ -2,7 +2,6 @@ package ua.edu.lnu.ami.flagsquiz.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -31,16 +30,10 @@ import ua.edu.lnu.ami.flagsquiz.R;
 import ua.edu.lnu.ami.flagsquiz.models.Country;
 import ua.edu.lnu.ami.flagsquiz.models.Statistics;
 import ua.edu.lnu.ami.flagsquiz.services.CountryService;
-import ua.edu.lnu.ami.flagsquiz.services.PreferencesService;
-import ua.edu.lnu.ami.flagsquiz.services.RegionService;
-import ua.edu.lnu.ami.flagsquiz.services.StatisticsService;
 
 public class QuizActivity extends Activity {
 
     private CountryService countryService;
-    private PreferencesService preferencesService;
-    private RegionService regionService;
-    private StatisticsService statisticsService;
 
     private String countryCorrectName;
 
@@ -54,21 +47,6 @@ public class QuizActivity extends Activity {
     @Inject
     void setCountryService(CountryService countryService) {
         this.countryService = countryService;
-    }
-
-    @Inject
-    void setPreferencesService(PreferencesService preferencesService) {
-        this.preferencesService = preferencesService;
-    }
-
-    @Inject
-    void setRegionService(RegionService regionService) {
-        this.regionService = regionService;
-    }
-
-    @Inject
-    void setStatisticsService(StatisticsService statisticsService) {
-        this.statisticsService = statisticsService;
     }
 
     public Integer getQuestionsAmount() {
