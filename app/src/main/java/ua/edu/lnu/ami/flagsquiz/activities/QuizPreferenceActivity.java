@@ -11,7 +11,9 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.support.constraint.solver.LinearSystem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import java.util.Set;
@@ -24,7 +26,6 @@ public class QuizPreferenceActivity extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.preferences_activity);
         getFragmentManager()
                 .beginTransaction()
                 .replace(android.R.id.content, new QuizPreferenceFragment()).commit();
@@ -36,6 +37,12 @@ public class QuizPreferenceActivity extends PreferenceActivity {
         private Button saveButton;
         private Button cancelButton;
         private Button resetStatsButton;
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.preferences_activity, container, false);
+        }
 
         @Override
         public void onCreate(final Bundle savedInstanceState)
