@@ -11,7 +11,6 @@ import ua.edu.lnu.ami.flagsquiz.services.StatisticsService;
 
 /**
  * <p>Represents an implementation of a service for CRUD operations on statistics.</p>
- * @author Tolik Pylypchuk
  */
 public class StatisticsServiceImpl implements StatisticsService {
 	

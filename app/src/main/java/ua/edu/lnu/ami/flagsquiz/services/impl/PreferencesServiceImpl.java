@@ -18,7 +18,6 @@ import ua.edu.lnu.ami.flagsquiz.services.RegionService;
 
 /**
  * <p>Represents an implementation of a service for accessing preferences.</p>
- * @author Tolik Pylypchuk
  */
 public class PreferencesServiceImpl implements PreferencesService {
 	

@@ -5,35 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import javax.inject.Inject;
-
-import dagger.android.DaggerActivity;
 import ua.edu.lnu.ami.flagsquiz.R;
-import ua.edu.lnu.ami.flagsquiz.services.CountryService;
-import ua.edu.lnu.ami.flagsquiz.services.RegionService;
-import ua.edu.lnu.ami.flagsquiz.services.StatisticsService;
 
-public class MainActivity extends DaggerActivity {
-	
-	private CountryService countryService;
-	private RegionService regionService;
-	private StatisticsService statisticsService;
+public class MainActivity extends Activity {
 
-	@Inject
-	void setCountryService(CountryService countryService) {
-		this.countryService = countryService;
-	}
-
-	@Inject
-	void setRegionService(RegionService regionService) {
-		this.regionService = regionService;
-	}
-
-	@Inject
-	void setStatisticsService(StatisticsService statisticsService) {
-		this.statisticsService = statisticsService;
-	}
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

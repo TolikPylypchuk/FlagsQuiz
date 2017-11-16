@@ -15,24 +15,31 @@
         android:text="@string/question"
         android:textAlignment="center" />
 
+    <ImageView
+        android:id="@+id/flag"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/flag_description"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/question" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/flag">
 
-        <ImageView
-            android:id="@+id/flag"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/flag_description"
-            app:layout_constraintHorizontal_bias="0.5" />
 
         <LinearLayout
             android:id="@+id/countries1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -111,11 +118,11 @@
         android:id="@+id/exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="backToMenu"
         android:text="@string/exit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout"
-        android:onClick="backToMenu"/>
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
 </android.support.constraint.ConstraintLayout>

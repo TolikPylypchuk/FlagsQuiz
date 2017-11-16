@@ -13,9 +13,9 @@ public class Country extends SugarRecord {
 	
 	@Unique
 	private String imagePath;
-	
+
 	private Region region;
-	
+
 	public Country() {
 	}
 	
@@ -48,7 +48,7 @@ public class Country extends SugarRecord {
 	public void setRegion(Region region) {
 		this.region = region;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Country #" + getId() + ": " + name;
