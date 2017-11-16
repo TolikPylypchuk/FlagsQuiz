@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<array name="num_questions">
+	<integer-array name="num_questions">
 		<item>10</item>
+		<item>15</item>
 		<item>20</item>
-	</array>
-	<array name="num_choices">
+	</integer-array>
+	<integer-array name="num_choices">
 		<item>3</item>
 		<item>6</item>
 		<item>9</item>
-	</array>
+	</integer-array>
 </resources>

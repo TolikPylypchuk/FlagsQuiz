@@ -11,4 +11,9 @@
 
     <string name="prefs_regions_title">Regions</string>
     <string name="prefs_regions_summary">Regions used in the quizzes</string>
+
+    <string name="button_reset">Reset</string>
+    <string name="button_save">Save</string>
+    <string name="button_cancel">Cancel</string>
+
 </resources>

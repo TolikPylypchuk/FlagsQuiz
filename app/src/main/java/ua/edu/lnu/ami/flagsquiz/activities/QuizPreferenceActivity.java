@@ -15,6 +15,7 @@ public class QuizPreferenceActivity extends PreferenceActivity {
         getFragmentManager()
                 .beginTransaction()
                 .replace(android.R.id.content, new QuizPreferenceFragment()).commit();
+
     }
 
     public static class QuizPreferenceFragment extends PreferenceFragment
@@ -24,6 +25,7 @@ public class QuizPreferenceActivity extends PreferenceActivity {
         {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
+            //setContentView(R.layout.preferences_activity);
         }
     }
 }

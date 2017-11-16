@@ -23,5 +23,21 @@
 		android:title="@string/prefs_regions_title"
 		android:dialogTitle="@string/prefs_regions_title"
 		android:summary="@string/prefs_regions_summary" />
-	
+
+	<!--<Button-->
+		<!--android:layout_width="wrap_content"-->
+		<!--android:layout_height="wrap_content"-->
+		<!--android:text="@string/button_reset" />-->
+	<!--<Button-->
+		<!--android:layout_width="wrap_content"-->
+		<!--android:layout_height="wrap_content"-->
+		<!--android:text="@string/default_settings" />-->
+	<!--<Button-->
+		<!--android:layout_width="wrap_content"-->
+		<!--android:layout_height="wrap_content"-->
+		<!--android:text="@string/button_save" />-->
+	<!--<Button-->
+		<!--android:layout_width="wrap_content"-->
+		<!--android:layout_height="wrap_content"-->
+		<!--android:text="@string/button_cancel"/>-->
 </PreferenceScreen>
