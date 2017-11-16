@@ -24,10 +24,10 @@ public class QuizPreferenceActivity extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.preferences_activity);
         getFragmentManager()
                 .beginTransaction()
                 .replace(android.R.id.content, new QuizPreferenceFragment()).commit();
-        setContentView(R.layout.preferences_activity);
 
     }
 
