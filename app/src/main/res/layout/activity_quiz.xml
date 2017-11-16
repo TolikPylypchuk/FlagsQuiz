@@ -50,21 +50,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:onClick="country1Chosen" />
 
             <Button
                 android:id="@+id/country2"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:onClick="country2Chosen" />
 
             <Button
                 android:id="@+id/country3"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:onClick="country3Chosen" />
         </LinearLayout>
 
         <LinearLayout
@@ -78,21 +81,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:onClick="country4Chosen" />
 
             <Button
                 android:id="@+id/country5"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:onClick="country5Chosen" />
 
             <Button
                 android:id="@+id/country6"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:onClick="country6Chosen" />
         </LinearLayout>
 
         <LinearLayout
@@ -106,21 +112,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:onClick="country7Chosen" />
 
             <Button
                 android:id="@+id/country8"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:onClick="country8Chosen" />
 
             <Button
                 android:id="@+id/country9"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textAlignment="center"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:onClick="country9Chosen" />
         </LinearLayout>
 
     </LinearLayout>
