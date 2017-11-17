@@ -1,18 +1,45 @@
 package ua.edu.lnu.ami.flagsquiz.activities;
-
+	
 import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.Objects;
+
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
 import ua.edu.lnu.ami.flagsquiz.R;
+import ua.edu.lnu.ami.flagsquiz.services.PreferencesService;
 
 public class MainActivity extends Activity {
+	
+	private Application application;
+	
+	static PreferencesService preferencesService;
+	static SharedPreferences sharedPreferences;
+	
+	@Inject
+	void setApplication(Application application){
+		this.application = application;
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		AndroidInjection.inject(this);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		this.application = Objects.requireNonNull(
+			application, "The application must not be null.");
+		
+		sharedPreferences = application.getSharedPreferences(
+			PreferencesService.PREFERENCES_NAME, Context.MODE_PRIVATE);
+		
 	}
 
 	public void startQuiz(View view) {
@@ -21,7 +48,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void settings(View view) {
-		Intent intent = new Intent(MainActivity.this, QuizActivity.class);
+		Intent intent = new Intent(MainActivity.this, QuizPreferenceActivity.class);
 		startActivity(intent);
 	}
 

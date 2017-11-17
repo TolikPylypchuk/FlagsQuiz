@@ -36,22 +36,25 @@ public class PreferencesServiceImpl implements PreferencesService {
 	@Override
 	public Preferences get(SharedPreferences sharedPreferences) {
 		Preferences preferences = new Preferences();
-		preferences.setNumQuestions(sharedPreferences.getInt(NUM_QUESTIONS, 10));
-		preferences.setNumChoices(sharedPreferences.getInt(NUM_CHOICES, 3));
+		preferences.setNumQuestions(Integer.valueOf(sharedPreferences.getString(NUM_QUESTIONS, "10")));
+		preferences.setNumChoices(Integer.valueOf(sharedPreferences.getString(NUM_CHOICES, "3")));
 
 		List<Region> regions = regionService.getAll();
-		Set<String> regionSet = new HashSet<String>();
+		Set<String> regionSet = new HashSet<>();
 		for (int i = 0; i < regions.size(); i++){
 			regionSet.add(regions.get(i).getName());
 		}
 
-		Set<String> regionNames = sharedPreferences.getStringSet(REGIONS, regionSet);
+		Object[] regionNames = sharedPreferences.getStringSet(REGIONS, regionSet).toArray();
 		
 		List<Region> preferredRegions = new ArrayList<>();
 		
 		for (Region region : regions) {
-			if (regionNames.contains(region.getName())) {
-				preferredRegions.add(region);
+			for (Object regionName : regionNames) {
+				if (regionName.equals(region.getId().toString())) {
+					preferredRegions.add(region);
+					break;
+				}
 			}
 		}
 		

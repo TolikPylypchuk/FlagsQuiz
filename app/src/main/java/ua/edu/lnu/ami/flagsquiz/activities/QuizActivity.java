@@ -84,8 +84,11 @@ public class QuizActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /*
-        Preferences preferences = this.preferencesService.get();
+        AndroidInjection.inject(this);
+
+        super.onCreate(savedInstanceState);
+        
+        Preferences preferences = this.preferencesService.get(MainActivity.sharedPreferences);
         this.questionsAmount = preferences.getNumQuestions();
         this.answersAmount = preferences.getNumChoices();
         List<Region> regionsClasses = preferences.getRegions();
@@ -93,13 +96,7 @@ public class QuizActivity extends Activity {
         {
             this.regions.add(region.getName());
         }
-        */
-
-        this.regions.add("Europe");
-
-        AndroidInjection.inject(this);
-
-        super.onCreate(savedInstanceState);
+    
         setContentView(R.layout.activity_quiz);
 
         LinearLayout firstColumn = findViewById(R.id.countries1);

@@ -80,7 +80,7 @@ public class QuizPreferenceActivity extends PreferenceActivity {
                     questionsNumberPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                         @Override
                         public boolean onPreferenceChange(Preference preference, Object o) {
-                            editor.putInt(PreferencesService.NUM_QUESTIONS, (Integer) o);
+                            editor.putInt(PreferencesService.NUM_QUESTIONS, Integer.valueOf(o.toString()));
                             editor.commit();
 
                             return true;
@@ -90,7 +90,7 @@ public class QuizPreferenceActivity extends PreferenceActivity {
                     choicesNumberPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                         @Override
                         public boolean onPreferenceChange(Preference preference, Object o) {
-                            editor.putInt(PreferencesService.NUM_CHOICES, (Integer) o);
+                            editor.putInt(PreferencesService.NUM_CHOICES, Integer.valueOf(o.toString()));
                             editor.commit();
 
                             return true;
