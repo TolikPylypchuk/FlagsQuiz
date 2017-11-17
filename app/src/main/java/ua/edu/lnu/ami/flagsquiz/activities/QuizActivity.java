@@ -226,7 +226,6 @@ public class QuizActivity extends Activity {
             else
             {
                 this.endQuiz();
-                this.attemptsCounter++;
             }
         }
         else
