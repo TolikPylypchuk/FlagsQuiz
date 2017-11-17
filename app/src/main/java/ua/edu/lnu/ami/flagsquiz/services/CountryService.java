@@ -11,4 +11,5 @@ public interface CountryService {
 	
 	Country getById(Long id);
 	List<Country> getAll();
+	List<Country> getByRegion(String region);
 }
