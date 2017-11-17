@@ -25,14 +25,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
-                <TextView
-                    android:id="@+id/editDate"
-                    android:layout_width="105dp"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:text="@string/header_date" />
-
                 <TextView
                     android:id="@+id/editQuestions"
                     android:layout_width="70dp"
@@ -42,17 +34,24 @@
 
                 <TextView
                     android:id="@+id/editAttempts"
-                    android:layout_width="85dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:text="@string/header_n_attempts" />
 
                 <TextView
                     android:id="@+id/editPercentage"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:text="@string/header_percentage" />
+        
+                <TextView
+                  android:id="@+id/editDate"
+                  android:layout_width="105dp"
+                  android:layout_height="wrap_content"
+                  android:ems="10"
+                  android:text="@string/header_date" />
         </TableRow>
     </TableLayout>
 

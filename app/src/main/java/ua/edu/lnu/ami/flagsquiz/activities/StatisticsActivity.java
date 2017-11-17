@@ -53,10 +53,10 @@ public class StatisticsActivity extends Activity {
 
             TableRow row = new TableRow(this);
 
-            row.addView(date);
             row.addView(questions);
             row.addView(attempts);
             row.addView(percentage);
+            row.addView(date);
 
             table.addView(row);
         }
