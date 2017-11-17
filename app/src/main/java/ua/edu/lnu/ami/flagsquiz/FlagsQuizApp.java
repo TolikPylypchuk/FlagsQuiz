@@ -7,10 +7,12 @@ import android.app.Fragment;
 
 import com.orm.SugarApp;
 
+import dagger.android.ContributesAndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import dagger.android.HasFragmentInjector;
 
+import ua.edu.lnu.ami.flagsquiz.activities.QuizActivity;
 import ua.edu.lnu.ami.flagsquiz.db.Database;
 import ua.edu.lnu.ami.flagsquiz.di.DaggerFlagsQuizAppComponent;
 

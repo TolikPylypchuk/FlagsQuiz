@@ -6,7 +6,6 @@ import ua.edu.lnu.ami.flagsquiz.models.Preferences;
 
 /**
  * <p>Represents a service for accessing preferences.</p>
- * @author Tolik Pylypchuk
  */
 public interface PreferencesService {
 	
