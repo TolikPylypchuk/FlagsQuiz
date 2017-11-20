@@ -16,7 +16,7 @@ public interface PreferencesService {
 	String NUM_CHOICES = "num_choices";
 	String REGIONS = "regions";
 
-    Preferences get(SharedPreferences sharedPreferences);
+    Preferences get();
 
     void populateRegions(MultiSelectListPreference regions);
 }

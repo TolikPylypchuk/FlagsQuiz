@@ -21,7 +21,6 @@ public class MainActivity extends Activity {
 	private Application application;
 	
 	static PreferencesService preferencesService;
-	static SharedPreferences sharedPreferences;
 	
 	@Inject
 	void setApplication(Application application){
@@ -36,9 +35,6 @@ public class MainActivity extends Activity {
 		
 		this.application = Objects.requireNonNull(
 			application, "The application must not be null.");
-		
-		sharedPreferences = application.getSharedPreferences(
-			PreferencesService.PREFERENCES_NAME, Context.MODE_PRIVATE);
 		
 	}
 

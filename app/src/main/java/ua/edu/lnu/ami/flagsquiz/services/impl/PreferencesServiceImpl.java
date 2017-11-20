@@ -34,7 +34,9 @@ public class PreferencesServiceImpl implements PreferencesService {
 	}
 	
 	@Override
-	public Preferences get(SharedPreferences sharedPreferences) {
+	public Preferences get() {
+		SharedPreferences sharedPreferences = application.getSharedPreferences(
+				PreferencesService.PREFERENCES_NAME, Context.MODE_PRIVATE);
 		Preferences preferences = new Preferences();
 		preferences.setNumQuestions(Integer.valueOf(sharedPreferences.getString(NUM_QUESTIONS, "10")));
 		preferences.setNumChoices(Integer.valueOf(sharedPreferences.getString(NUM_CHOICES, "3")));

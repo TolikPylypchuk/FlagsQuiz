@@ -88,7 +88,7 @@ public class QuizActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         
-        Preferences preferences = this.preferencesService.get(MainActivity.sharedPreferences);
+        Preferences preferences = this.preferencesService.get();
         this.questionsAmount = preferences.getNumQuestions();
         this.answersAmount = preferences.getNumChoices();
         List<Region> regionsClasses = preferences.getRegions();

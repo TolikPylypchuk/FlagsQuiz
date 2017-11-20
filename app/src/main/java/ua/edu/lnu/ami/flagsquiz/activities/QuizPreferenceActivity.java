@@ -17,6 +17,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 
 import java.util.HashSet;
 import java.util.List;
@@ -66,84 +68,20 @@ public class QuizPreferenceActivity extends PreferenceActivity {
 
             ListPreference questionsNumberPreference = (ListPreference)findPreference("num_questions");
             ListPreference choicesNumberPreference = (ListPreference)findPreference("num_choices");
-            Button saveButton = view.findViewById(R.id.saveButton);
-            Button cancelButton = view.findViewById(R.id.cancelButton);
             Button resetStatsButton = view.findViewById(R.id.resetStatsButton);
 
-            SharedPreferences.Editor editor =
-                    MainActivity.sharedPreferences.edit();
 
-            saveButton.setOnClickListener(new View.OnClickListener() {
+            resetStatsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    questionsNumberPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                        @Override
-                        public boolean onPreferenceChange(Preference preference, Object o) {
-                            editor.putInt(PreferencesService.NUM_QUESTIONS, Integer.valueOf(o.toString()));
-                            editor.commit();
+                    /*TableLayout table = (TableLayout)getView().findViewById(R.id.statistics);
 
-                            return true;
-                        }
-                    });
-
-                    choicesNumberPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                        @Override
-                        public boolean onPreferenceChange(Preference preference, Object o) {
-                            editor.putInt(PreferencesService.NUM_CHOICES, Integer.valueOf(o.toString()));
-                            editor.commit();
-
-                            return true;
-                        }
-                    });
-
-                    regionsPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                        @Override
-                        public boolean onPreferenceChange(Preference preference, Object o) {
-                            editor.putStringSet(PreferencesService.REGIONS,
-                                    (Set<String>) o);
-                            editor.commit();
-
-                            return true;
-                        }
-                    });
-
-                    Intent i = new Intent(getActivity(), MainActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(i);
-                }
-
-            });
-
-            cancelButton.setOnClickListener(new View.OnClickListener()
-            {
-                @Override
-                public void onClick(View view) {
-
-                    editor.putInt(PreferencesService.NUM_QUESTIONS, 10);
-                    editor.putInt(PreferencesService.NUM_CHOICES, 3);
-                    List<Region> regions = regionService.getAll();
-                    Set<String> regionSet = new HashSet<String>();
-
-                    for (int i = 0; i < regions.size(); i++){
-                        regionSet.add(regions.get(i).getName());
-                    }
-                    editor.putStringSet(PreferencesService.REGIONS, regionSet);
-
-                    editor.commit();
-
-                    Intent i = new Intent(getActivity(), MainActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(i);
+                    int count=table.getChildCount();
+                    for(int i=0;i<count;i++)
+                        table.removeView(table.getChildAt(i));*/
                 }
             });
-
-            /*resetStatsButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });*/
 
             return view;
         }

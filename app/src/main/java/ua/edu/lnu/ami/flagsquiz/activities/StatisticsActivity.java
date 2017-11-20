@@ -49,7 +49,7 @@ public class StatisticsActivity extends Activity {
             TextView attempts = new TextView(this);
             attempts.setText(String.valueOf(stats.getNumAttempts()));
             TextView percentage = new TextView(this);
-            percentage.setText(String.valueOf((int)((double)stats.getNumAttempts() * 100 / stats.getNumQuestions())));
+            percentage.setText(String.valueOf((int)((double)stats.getNumQuestions() * 100 / stats.getNumAttempts())));
 
             TableRow row = new TableRow(this);
 
