@@ -71,6 +71,9 @@ public class QuizPreferenceActivity extends PreferenceActivity {
                                  Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.preferences_activity, container, false);
 
+            MultiSelectListPreference regionsPreference = (MultiSelectListPreference)findPreference("regions");
+            preferencesService.populateRegions(regionsPreference);
+            
             Button resetStatsButton = view.findViewById(R.id.resetStatsButton);
 
             resetStatsButton.setOnClickListener(new View.OnClickListener() {
