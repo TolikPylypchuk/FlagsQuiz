@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.Toast;
 
 import java.util.HashSet;
 import java.util.List;
@@ -31,6 +32,7 @@ import ua.edu.lnu.ami.flagsquiz.R;
 import ua.edu.lnu.ami.flagsquiz.models.Region;
 import ua.edu.lnu.ami.flagsquiz.services.PreferencesService;
 import ua.edu.lnu.ami.flagsquiz.services.RegionService;
+import ua.edu.lnu.ami.flagsquiz.services.StatisticsService;
 
 public class QuizPreferenceActivity extends PreferenceActivity {
 
@@ -45,8 +47,9 @@ public class QuizPreferenceActivity extends PreferenceActivity {
 
     public static class QuizPreferenceFragment extends PreferenceFragment
     {
-        RegionService regionService;
-        PreferencesService preferencesService;
+        private RegionService regionService;
+        private PreferencesService preferencesService;
+        private StatisticsService statisticsService;
 
         @Inject
         public void setRegionService(RegionService regionService) {
@@ -58,28 +61,24 @@ public class QuizPreferenceActivity extends PreferenceActivity {
             this.preferencesService = preferencesService;
         }
 
+        @Inject
+        void setStatisticsService(StatisticsService statisticsService) {
+            this.statisticsService = statisticsService;
+        }
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.preferences_activity, container, false);
 
-            MultiSelectListPreference regionsPreference = (MultiSelectListPreference)findPreference("regions");
-            preferencesService.populateRegions(regionsPreference);
-
-            ListPreference questionsNumberPreference = (ListPreference)findPreference("num_questions");
-            ListPreference choicesNumberPreference = (ListPreference)findPreference("num_choices");
             Button resetStatsButton = view.findViewById(R.id.resetStatsButton);
-
 
             resetStatsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    /*TableLayout table = (TableLayout)getView().findViewById(R.id.statistics);
-
-                    int count=table.getChildCount();
-                    for(int i=0;i<count;i++)
-                        table.removeView(table.getChildAt(i));*/
+                    statisticsService.deleteAll();
+                    Toast.makeText(getActivity(), "Statistics table is empty.",
+                            Toast.LENGTH_LONG).show();
                 }
             });
 
