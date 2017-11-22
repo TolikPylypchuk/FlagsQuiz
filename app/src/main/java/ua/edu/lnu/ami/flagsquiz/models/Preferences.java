@@ -3,9 +3,10 @@ package ua.edu.lnu.ami.flagsquiz.models;
 import java.util.List;
 
 /**
- * <p>Represents the application preferences.</p>
+ * <p>Represents the application flags_quiz_preferences.</p>
  */
 public class Preferences {
+
 	
 	private int numQuestions;
 	private int numChoices;

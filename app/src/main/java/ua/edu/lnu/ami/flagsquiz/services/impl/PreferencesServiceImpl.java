@@ -2,9 +2,11 @@ package ua.edu.lnu.ami.flagsquiz.services.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import android.app.Application;
 import android.content.Context;
@@ -17,7 +19,7 @@ import ua.edu.lnu.ami.flagsquiz.services.PreferencesService;
 import ua.edu.lnu.ami.flagsquiz.services.RegionService;
 
 /**
- * <p>Represents an implementation of a service for accessing preferences.</p>
+ * <p>Represents an implementation of a service for accessing flags_quiz_preferences.</p>
  */
 public class PreferencesServiceImpl implements PreferencesService {
 	
@@ -33,22 +35,28 @@ public class PreferencesServiceImpl implements PreferencesService {
 	
 	@Override
 	public Preferences get() {
-		SharedPreferences sharedPreferences =
-			application.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
-		
+		SharedPreferences sharedPreferences = application.getSharedPreferences(
+				PreferencesService.PREFERENCES_NAME, Context.MODE_PRIVATE);
 		Preferences preferences = new Preferences();
-		preferences.setNumQuestions(sharedPreferences.getInt(NUM_QUESTIONS, -1));
-		preferences.setNumChoices(sharedPreferences.getInt(NUM_QUESTIONS, -1));
-		
-		Set<String> regionNames = sharedPreferences.getStringSet(REGIONS, Collections.emptySet());
-		
+		preferences.setNumQuestions(Integer.valueOf(sharedPreferences.getString(NUM_QUESTIONS, "10")));
+		preferences.setNumChoices(Integer.valueOf(sharedPreferences.getString(NUM_CHOICES, "3")));
+
 		List<Region> regions = regionService.getAll();
+		Set<String> regionSet = new HashSet<>();
+		for (int i = 0; i < regions.size(); i++){
+			regionSet.add(regions.get(i).getName());
+		}
+
+		Object[] regionNames = sharedPreferences.getStringSet(REGIONS, regionSet).toArray();
 		
 		List<Region> preferredRegions = new ArrayList<>();
 		
 		for (Region region : regions) {
-			if (regionNames.contains(region.getName())) {
-				preferredRegions.add(region);
+			for (Object regionName : regionNames) {
+				if (regionName.equals(region.getId().toString())) {
+					preferredRegions.add(region);
+					break;
+				}
 			}
 		}
 		

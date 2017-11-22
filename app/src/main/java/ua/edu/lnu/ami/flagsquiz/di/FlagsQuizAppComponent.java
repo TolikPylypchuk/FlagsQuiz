@@ -1,5 +1,7 @@
 package ua.edu.lnu.ami.flagsquiz.di;
 
+import android.app.Application;
+
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -18,6 +20,7 @@ import ua.edu.lnu.ami.flagsquiz.services.*;
 @Component(modules = { AndroidInjectionModule.class, FlagsQuizAppModule.class })
 @Singleton
 public interface FlagsQuizAppComponent extends AndroidInjector<FlagsQuizApp> {
+	Application provideApplication();
 	CountryService provideCountryService();
 	RegionService provideRegionService();
 	PreferencesService providePreferencesService();

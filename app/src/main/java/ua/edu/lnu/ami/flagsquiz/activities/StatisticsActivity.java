@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.icu.text.DateFormat;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ public class StatisticsActivity extends Activity {
 
     private StatisticsService statisticsService;
     TableLayout table;
+    //Button resetStatsButton;
 
     @Inject
     void setStatisticsService(StatisticsService statisticsService) {
@@ -49,7 +52,7 @@ public class StatisticsActivity extends Activity {
             TextView attempts = new TextView(this);
             attempts.setText(String.valueOf(stats.getNumAttempts()));
             TextView percentage = new TextView(this);
-            percentage.setText(String.valueOf((int)((double)stats.getNumAttempts() * 100 / stats.getNumQuestions())));
+            percentage.setText(String.valueOf((int)((double)stats.getNumQuestions() * 100 / stats.getNumAttempts())));
 
             TableRow row = new TableRow(this);
 

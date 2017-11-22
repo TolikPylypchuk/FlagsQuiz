@@ -35,6 +35,7 @@
         <activity android:name=".activities.AboutActivity" />
         <activity android:name=".activities.StatisticsActivity" />
         <activity android:name=".activities.QuizActivity" />
+        <activity android:name=".activities.QuizPreferenceActivity" />
     </application>
 
 </manifest>
